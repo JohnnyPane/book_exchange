@@ -4,6 +4,7 @@ import Root from './components/root';
 
 import { login, signup } from './util/session_api_util';
 import configureStore from './store/store';
+import { fetchBooks } from './actions/book_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
   let store;
@@ -19,6 +20,10 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     store = configureStore();
   }
+
+  window.fetchBooks = fetchBooks;
+  window.dispatch = store.dispatch;
+  window.getState = store.dispatch;
   const root = document.getElementById("root");
   ReactDOM.render(<Root store={store} />, root);
 });
