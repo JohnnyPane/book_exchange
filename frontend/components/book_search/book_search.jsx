@@ -35,7 +35,7 @@ class BookSearch extends React.Component {
 
     const { searchedBooks } = this.props;
 
-    const apple = () => (
+    const createSearchList = () => (
       searchedBooks[2].map((book, i) => (
         <SearchedBookIndexItem
           book={book}
@@ -49,13 +49,13 @@ class BookSearch extends React.Component {
         <div className="search-box">
           <input type="search"
             id="books-search"
-            placeholder="Search for a book"
+            placeholder="Enter a book or an author"
             onChange={this.update("searchInput")}
           />
           <button onClick={this.searchGoogle}>Search</button>
         </div>
         <div className="searched-books">
-          {searchedBooks.length > 0 ? apple() : null}
+          {searchedBooks.length > 0 ? createSearchList() : null}
         </div>
       </div>
     )
