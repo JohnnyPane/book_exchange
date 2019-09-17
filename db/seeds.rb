@@ -7,16 +7,32 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+Wishlist.create!(
+  title: 'Fantasy',
+  genre: 'Fantasy',
+  author_id: 1
+)
+
+Wishlist.create!(
+  title: 'Fiction',
+  genre: 'Crime',
+  author_id: 1
+)
+
 Book.create!(
   title: 'Harry Potter and the Chamber of Secrets',
   authors: 'J.K. Rowling',
   description: 'A delightfully good book',
-  imageURL: 'http://books.google.com/books/content?id=5iTebBW-w7QC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api'
+  imageURL: 'http://books.google.com/books/content?id=5iTebBW-w7QC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api',
+  author_id: 1,
+  wishlist_id: 1
 )
 
 Book.create!(
   title: 'The Hobbit, Or, There and Back Again',
   authors: 'J.R.R. Tolkien',
   description: "Best children's book of all time",
-  imageURL: 'http://books.google.com/books/content?id=pD6arNyKyi8C&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api'
+  imageURL: 'http://books.google.com/books/content?id=pD6arNyKyi8C&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api',
+  author_id: 1,
+  wishlist_id: 2
 )

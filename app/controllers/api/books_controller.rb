@@ -4,7 +4,7 @@ class Api::BooksController < ApplicationController
   PER_PAGE = 10
 
   def index
-    @books = Book.all
+    @books = Book.all.where(author_id: current_user)
     render :index
   end
 

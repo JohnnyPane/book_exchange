@@ -5,14 +5,20 @@ class SearchedBookIndexItem extends React.Component {
     super(props);
   }
 
+
+
   render() {
     const { volumeInfo } = this.props.book;
+
+    const renderImage = () => (
+      <img src={volumeInfo.imageLinks.smallThumbnail}></img>
+    )
     return (
       <div>
         <h1>{volumeInfo.title}</h1>
         <h3>{volumeInfo.authors}</h3>
         <p>{volumeInfo.description}</p>
-        <img src={volumeInfo.imageLinks.smallThumbnail}></img>
+        {volumeInfo.hasOwnProperty('imageLinks') ? renderImage() : null}
       </div>
     )
   }

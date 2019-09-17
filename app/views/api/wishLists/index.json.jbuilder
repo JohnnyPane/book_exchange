@@ -1,5 +1,5 @@
-@wish_lists.each do |wish_list|
-  json.set! wish_list.id do
-    json.partial! 'wish_list', wish_list: wish_list
+@wishlists.each do |wishlist|
+  json.set! wishlist.id do
+    json.partial! 'wishlist', wishlist: wishlist
   end
 end

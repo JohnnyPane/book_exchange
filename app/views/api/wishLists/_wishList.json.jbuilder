@@ -1,1 +1,1 @@
-json.extract! wish_list, :id, :title, :genre
+json.extract! wishlist, :id, :title, :genre

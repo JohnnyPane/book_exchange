@@ -20,8 +20,11 @@ ActiveRecord::Schema.define(version: 2019_09_16_164656) do
     t.string "authors"
     t.string "imageURL"
     t.string "description"
+    t.integer "author_id", null: false
+    t.integer "wishlist_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_books_on_author_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -34,13 +37,13 @@ ActiveRecord::Schema.define(version: 2019_09_16_164656) do
     t.index ["username"], name: "index_users_on_username", unique: true
   end
 
-  create_table "wish_lists", force: :cascade do |t|
+  create_table "wishlists", force: :cascade do |t|
     t.string "title", null: false
     t.string "genre"
     t.integer "author_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["author_id"], name: "index_wish_lists_on_author_id"
+    t.index ["author_id"], name: "index_wishlists_on_author_id"
   end
 
 end

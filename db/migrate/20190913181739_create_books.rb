@@ -5,8 +5,11 @@ class CreateBooks < ActiveRecord::Migration[5.2]
       t.string :authors
       t.string :imageURL
       t.string :description
+      t.integer :author_id, null: false
+      t.integer :wishlist_id, null: false
 
       t.timestamps
     end
+    add_index :books, :author_id
   end
 end
