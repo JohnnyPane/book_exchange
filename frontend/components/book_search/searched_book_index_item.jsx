@@ -8,6 +8,7 @@ class SearchedBookIndexItem extends React.Component {
 
   componentDidMount() {
     console.log(this.props, "search index item");
+    this.props.fetchWishlists();
   }
 
 

@@ -23,7 +23,7 @@ class BookSearch extends React.Component {
 
   render() {
 
-    const { userId, searchedBooks, createBook } = this.props;
+    const { userId, searchedBooks, createBook, fetchWishlists, wishlists } = this.props;
 
     const createSearchList = () => (
       searchedBooks[2].map((book, i) => (
@@ -32,6 +32,8 @@ class BookSearch extends React.Component {
           key={i}
           createBook={createBook}
           userId={userId}
+          wishlists={wishlists}
+          fetchWishlists={fetchWishlists}
         />
       ))
     )
