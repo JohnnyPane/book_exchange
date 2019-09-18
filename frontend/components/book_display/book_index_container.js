@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 
 import BookIndex from './book_index';
 import { asArray } from '../../reducers/selectors';
-import { fetchBooks } from '../../actions/book_actions';
+import { fetchBooks, createBook } from '../../actions/book_actions';
 import { googleBooks } from '../../actions/book_actions';
 
 
@@ -13,7 +13,8 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
   fetchBooks: () => dispatch(fetchBooks()),
-  googleBooks: input => dispatch(googleBooks(input))
+  googleBooks: input => dispatch(googleBooks(input)),
+  createBook: book => dispatch(createBook(book))
 });
 
 export default connect(

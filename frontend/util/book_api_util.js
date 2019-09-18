@@ -5,3 +5,18 @@ export const fetchBooks = data => (
     data
   })
 );
+
+export const fetchBook = id => (
+  $.ajax({
+    method: 'GET',
+    url: `api/benches/${id}`
+  })
+);
+
+export const createBook = book => (
+  $.ajax({
+    method: 'POST',
+    url: '/api/books',
+    data: book
+  })
+);

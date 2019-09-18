@@ -1,5 +1,6 @@
 class Api::BooksController < ApplicationController
   before_action :require_logged_in, only: [:create]
+  skip_before_action :verify_authenticity_token
 
   PER_PAGE = 10
 
@@ -13,13 +14,20 @@ class Api::BooksController < ApplicationController
   end
 
   def create
-    @book = Book.create!(book_params)
-    render :show
+    @book = Book.new(book_params)
+
+    @book.author_id = current_user.id
+  
+    if @book.save
+      render :show
+    else
+      render @book.errors.full_messages, status: 401
+    end
   end
 
   private
 
   def book_params
-    params.require(:book).permit(:title, :authors, :description, :imageURL)
+    params.permit(:title, :authors, :description, :imageURL, :author_id, :wishlist_id)
   end
 end

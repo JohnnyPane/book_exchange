@@ -1,6 +1,7 @@
 import React from 'react';
 import { googleBooks } from '../../actions/book_actions';
 import SearchedBookIndexItem from './searched_book_index_item';
+import ReactAutocomplete from 'react-autocomplete';
 
 class BookSearch extends React.Component {
   constructor(props) {
@@ -18,28 +19,19 @@ class BookSearch extends React.Component {
   searchGoogle(e) {
     e.preventDefault();
     this.props.googleBooks(this.state.searchInput);
-  }
-
-  componentDidMount() {
-    console.log(this.props);
-    console.log(this.props.searchedBooks, "searched");
-  }
-
-  componentDidUpdate() {
-    console.log(this.state.searchInput);
-    console.log(this.props.searchedBooks, "searched");
-  }
+  };
 
   render() {
-    //searched book length > 1 then render
 
-    const { searchedBooks } = this.props;
+    const { userId, searchedBooks, createBook } = this.props;
 
     const createSearchList = () => (
       searchedBooks[2].map((book, i) => (
         <SearchedBookIndexItem
           book={book}
           key={i}
+          createBook={createBook}
+          userId={userId}
         />
       ))
     )

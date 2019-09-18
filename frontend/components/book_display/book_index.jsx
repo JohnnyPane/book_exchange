@@ -14,13 +14,15 @@ class BookIndex extends React.Component {
   }
 
   render() {
-    const { books, googleBooks, searchedBooks } = this.props;
+    const { userId, books, googleBooks, searchedBooks, createBook } = this.props;
     return (
       <div className="book-index">
         <div className ="book-search">
           <BookSearch 
             googleBooks={googleBooks}
             searchedBooks={searchedBooks} 
+            createBook={createBook}
+            userId={userId}
           />
         </div>
         <ul className="book-index-list">
