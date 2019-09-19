@@ -4,7 +4,7 @@ const wishlistsReducer = (state = {}, action) => {
   Object.freeze(state);
   switch (action.type) {
     case RECEIVE_WISHLISTS:
-      return action.wishlists;
+      return action.lists;
     default:
       return state;
   }
