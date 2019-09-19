@@ -10,7 +10,6 @@ class SearchedBookIndexItem extends React.Component {
     console.log(this.props, "search index item");
   }
 
-
   // NEED TO CHANGE WISHLIST!!!!
   handleSubmit(e) {
     e.preventDefault();
@@ -27,6 +26,7 @@ class SearchedBookIndexItem extends React.Component {
 
   render() {
     const { volumeInfo } = this.props.book;
+    const { wishlists } = this.props;
 
     const renderImage = () => (
       <img src={volumeInfo.imageLinks.smallThumbnail}></img>
@@ -39,7 +39,17 @@ class SearchedBookIndexItem extends React.Component {
           <p>{volumeInfo.description}</p>
           {volumeInfo.hasOwnProperty('imageLinks') ? renderImage() : null}
         </div>
-        <button className="create-book-btn" onClick={this.handleSubmit}>Add to Wish List</button>
+        {/* <button className="create-book-btn" onClick={this.handleSubmit}>Add to Wish List</button> */}
+        <div className="dropdown">
+          <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Dropdown
+          </button>
+          <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
+            {wishlists.map((list, i) => {
+              return <button className="dropdown-item" type="button" key={i} onClick={this.handleSubmit}>{list.title}</button>
+            })}
+          </div>
+        </div>
       </div>
     )
   }
