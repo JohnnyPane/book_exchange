@@ -6,6 +6,7 @@ import SignUpFormContainer from './session_form/signup_form_container';
 import LoginFormContainer from './session_form/login_form_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import BookIndexContainer from './book_display/book_index_container';
+import WishlistIndexContainer from './wishlist_display/wishlist_index_container';
 
 
 const App = () => (
@@ -16,7 +17,7 @@ const App = () => (
 		</header>
 		<AuthRoute exact path="/login" component={LoginFormContainer} />
 		<AuthRoute exact path="/signup" component={SignUpFormContainer} />
-		<ProtectedRoute exact path="/" component={BookIndexContainer} />
+		<ProtectedRoute exact path="/" component={WishlistIndexContainer} />
 	</div>
 );
 
