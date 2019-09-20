@@ -4,7 +4,8 @@ class SearchedBookIndexItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      wishlist_id: ""
+      wishlist_id: "",
+      button_title: "",
     }
     this.handleSubmit = this.handleSubmit.bind(this);
     this.update = this.update.bind(this);
@@ -29,7 +30,11 @@ class SearchedBookIndexItem extends React.Component {
       wishlist_id: this.state.wishlist_id
     };
     console.log(newBook);
-    this.props.createBook(newBook);
+    if (this.state.wishlist_id.length > 0) {
+      this.props.createBook(newBook);
+    } else {
+      alert('please select a wishlist to add the book to');
+    }
   }
 
   render() {
@@ -49,7 +54,7 @@ class SearchedBookIndexItem extends React.Component {
         </div>
         <div className="dropdown">
           <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Add to a wishlist
+            {this.state.button_title.length > 0 ? "Hello" : "Choose a wishlist"}
           </button>
           <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
             {wishlists.map((list, i) => {
