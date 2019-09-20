@@ -2,7 +2,8 @@ class Api::WishlistsController < ApplicationController
   
 
   def index
-    @wishlists = Wishlist.all.where(author_id: current_user)
+    wishlists = Wishlist.all.where(author_id: current_user)
+    @wishlists = wishlists.includes(:books)
     render :index
   end
 

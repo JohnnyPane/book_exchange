@@ -5,3 +5,11 @@ export const fetchWishlists = data => (
     data
   })
 );
+
+export const fetchWishlist = id => (
+  $.ajax({
+    method: 'GET',
+    url: `api/wishlists/${id}`
+  })
+);
+
