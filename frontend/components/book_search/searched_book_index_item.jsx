@@ -11,15 +11,11 @@ class SearchedBookIndexItem extends React.Component {
     this.update = this.update.bind(this);
   }
 
-  componentDidMount() {
-    console.log(this.props, "search index item");
-  }
-
   update(property) {
     return e => this.setState({ [property]: e.currentTarget.value });
   }
 
-  // NEED TO CHANGE WISHLIST!!!!
+  // Attach a book to a wishlist
   handleSubmit(e) {
     e.preventDefault();
     const newBook = {
@@ -29,7 +25,6 @@ class SearchedBookIndexItem extends React.Component {
       description: this.props.book.volumeInfo.description,
       wishlist_id: this.state.wishlist_id
     };
-    console.log(newBook);
     if (this.state.wishlist_id.length > 0) {
       this.props.createBook(newBook);
     } else {
@@ -44,8 +39,15 @@ class SearchedBookIndexItem extends React.Component {
     const renderImage = () => (
       <img src={volumeInfo.imageLinks.smallThumbnail}></img>
     )
+
+    const updateDropdownName = () => {
+      const titles =[];
+      wishlists.map(list => titles.push(list.title));
+      return titles[this.state.wishlist_id];
+    }
+
     return (
-      <div className="searched-index-wrapper">
+      <div className="searched-index-wrapper"> 
         <div className="book-index-list">
           <h1>{volumeInfo.title}</h1>
           <h3>{volumeInfo.authors}</h3>
@@ -53,12 +55,12 @@ class SearchedBookIndexItem extends React.Component {
           {volumeInfo.hasOwnProperty('imageLinks') ? renderImage() : null}
         </div>
         <div className="dropdown">
-          <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            {this.state.button_title.length > 0 ? "Hello" : "Choose a wishlist"}
+          <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" value={this.state.button_title} onClick={this.update('button_title')}>
+          {this.state.wishlist_id.length < 1 ? 'choose a wishlist' : updateDropdownName()}
           </button>
           <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
             {wishlists.map((list, i) => {
-              return <button className="dropdown-item" type="button" key={i} value={list.id} onClick={this.update('wishlist_id')}>{list.title}</button>
+              return <button className="dropdown-item" type="button" key={i} value={i} onClick={this.update('wishlist_id')}>{list.title}</button>
             })}
           </div>
         </div>
