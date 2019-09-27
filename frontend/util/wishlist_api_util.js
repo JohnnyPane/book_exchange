@@ -13,3 +13,5 @@ export const fetchWishlist = id => (
   })
 );
 
+
+// add destroy

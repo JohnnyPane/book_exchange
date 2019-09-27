@@ -4,7 +4,7 @@ import { fetchWishlist } from '../../actions/wishlist_actions';
 import { selectBooksForList, selectWishlist } from '../../reducers/selectors';
 import WishlistShow from './wishlist_show';
 
-const mapStateToProps = (state, {natch}) => {
+const mapStateToProps = (state, {match}) => {
   const wishlistId = parseInt(match.params.wishlistId);
   const wishlist = selectWishlist(state.entities, wishlistId)
   const books = selectBooksForList(state.entities, wishlist);
@@ -16,7 +16,7 @@ const mapStateToProps = (state, {natch}) => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  fetchWishlist: id => dispatch(fetchWishlist(id)
+  fetchWishlist: id => dispatch(fetchWishlist(id))
 });
 
 export default connect(
