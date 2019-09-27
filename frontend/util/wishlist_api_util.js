@@ -14,4 +14,4 @@ export const fetchWishlist = id => (
 );
 
 
-// add destroy
+// add destroy and update
