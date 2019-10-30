@@ -17,7 +17,7 @@ const App = () => (
 		</header>
 		<AuthRoute exact path="/login" component={LoginFormContainer} />
 		<AuthRoute exact path="/signup" component={SignUpFormContainer} />
-		<ProtectedRoute exact path="/" component={WishlistIndexContainer} />
+		<ProtectedRoute exact path="/" component={BookIndexContainer} />
 	</div>
 );
 

@@ -10,10 +10,10 @@ class BookIndexItem extends React.Component {
     return (
       <div className="book-index-item">
         <li>
-          <h1>{title}</h1>
-          <h3>{authors}</h3>
-          <p>{description}</p>
+          <h5>{title}</h5>
           <img src={imageURL}></img>
+          <h6>{authors}</h6>
+          <p>{description}</p>
         </li>
       </div>
     )

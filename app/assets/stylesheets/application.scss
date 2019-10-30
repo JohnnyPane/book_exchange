@@ -13,3 +13,19 @@
  */
 
 @import "bootstrap";
+
+
+li {
+  list-style-type: none;
+}
+
+.book-index-item {
+    display: flex;
+    width: 25%;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 10px;
+}
