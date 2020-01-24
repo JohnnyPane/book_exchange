@@ -16,7 +16,7 @@ class Api::WishlistsController < ApplicationController
   end
 
   def show
-    @wishlist = Wishlist.find params[:id]
+    @wishlist = Wishlist.find(params[:id])
     render :show
   end
 

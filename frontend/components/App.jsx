@@ -12,12 +12,15 @@ import WishlistIndexContainer from './wishlist_display/wishlist_index_container'
 const App = () => (
 	<div>
 		<header>
-			<h1>Book Exchange</h1>
-			<WelcomeContainer />
+			<nav className="header-nav nav">
+				<h1>Book Exchange</h1>
+				<WelcomeContainer />
+			</nav>
 		</header>
 		<AuthRoute exact path="/login" component={LoginFormContainer} />
 		<AuthRoute exact path="/signup" component={SignUpFormContainer} />
 		<ProtectedRoute exact path="/" component={BookIndexContainer} />
+		<ProtectedRoute exact path="/wishlists" component={WishlistIndexContainer} />
 	</div>
 );
 
