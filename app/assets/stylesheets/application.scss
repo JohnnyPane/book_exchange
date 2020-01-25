@@ -15,8 +15,9 @@
 @import "bootstrap";
 
 
-li {
+ul {
   list-style-type: none;
+  padding: 0;
 }
 
 .header-nav {
@@ -35,4 +36,35 @@ li {
     border: 1px solid;
     border-radius: 5px;
     padding: 10px;
+}
+
+.wishlist-index {
+  display: flex;
+  justify-content: space-around;
+}
+
+.wishlist-index-titles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.wishlist-index-item {
+  display: flex;
+  flex-direction: column;
+  width: 33%;
+  float: left;
+}
+
+.wishlist-book-item {
+  display: flex;
+}
+
+.wishlist-book-item > div {
+  flex-direction: column;
+}
+
+.wish-index-book-img {
+  height: 66px;
 }

@@ -16,12 +16,13 @@ class WishlistIndex extends React.Component {
     const { wishlists } = this.props;
 
     return (
-      <div className="wishlist-index">
-        <div>
+      <div>
+        <div className="wishlist-index">
           {wishlists.map(list => (
             <WishlistIndexItem
               list={list}
               key={list.id}
+              className="wishlist-container"
             />
           ))}
           </div>

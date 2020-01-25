@@ -12,14 +12,18 @@ class WishlistIndexItem extends React.Component {
     Object.keys(books).map(book => console.log(books[book]))
     return (
       <div className="wishlist-index-item">
-        <h3>{title}</h3>
-        <h5>{genre}</h5>
+        <div className="wishlist-index-titles">
+          <h3>{title}</h3>
+          <h5>Genre: {genre}</h5>
+        </div>
         <ul className="wish-book-index-list">
           {Object.keys(books).map(book => (
-              <li key={book}>
+              <li key={book} className="wishlist-book-item">
                 <img src={books[book].imageURL} className="wish-index-book-img"></img>
-                <h6>{books[book].title}</h6>
-                <h6>{books[book].authors}</h6>
+                <div>
+                  <h6>{books[book].title}</h6>
+                  <h6>{books[book].authors}</h6>
+                </div>
               </li>
             ))}
         </ul>
