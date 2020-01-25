@@ -16,6 +16,7 @@ class BookIndex extends React.Component {
 
   render() {
     const { userId, books, googleBooks, searchedBooks, createBook, wishlists, fetchWishlists } = this.props;
+    console.log(this.props, "props")
     return (
       <div className="book-index">
         <div className ="book-search">

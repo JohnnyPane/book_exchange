@@ -21,6 +21,7 @@ const App = () => (
 		<AuthRoute exact path="/signup" component={SignUpFormContainer} />
 		<ProtectedRoute exact path="/" component={BookIndexContainer} />
 		<ProtectedRoute exact path="/wishlists" component={WishlistIndexContainer} />
+		{/* <Route path="/wishlists/:wishlistId" component={WishlistShowContainer} /> */}
 	</div>
 );
 

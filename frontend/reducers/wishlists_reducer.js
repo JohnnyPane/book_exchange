@@ -1,3 +1,5 @@
+import merge from "lodash/merge";
+
 import { 
   RECEIVE_WISHLISTS,
   RECEIVE_WISHLIST 
@@ -13,11 +15,11 @@ const wishlistsReducer = (state = {}, action) => {
     case RECEIVE_WISHLIST:
       const newList = { [action.list.id]: action.list };
       return Object.assign({}, state, newList);
-    case RECEIVE_BOOKS:
-      const { book } = action;
-      const newState = merge({}, state);
-      newState[book.wishlist_id].bookIds.push(book.id);
-      return newState
+    // case RECEIVE_BOOKS:
+    //   const { book } = action;
+    //   const newState = merge({}, state);
+    //   newState[book.wishlist_id].bookIds.push(book.id);
+    //   return newState
     default:
       return state;
   }

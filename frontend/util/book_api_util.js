@@ -17,6 +17,6 @@ export const createBook = book => (
   $.ajax({
     method: 'POST',
     url: '/api/books',
-    data: book
+    data: { book }
   })
 );
