@@ -10,11 +10,15 @@ const Welcome = ({ currentUser, logout }) => {
 		</nav>
 	);
 	const personalWelcome = () => (
-			<hgroup className="header-group">
-				<h2 className="header-name">Hi, {currentUser.username}!</h2>
-				<button className="header-button" onClick={logout}>Log Out</button>
-			</hgroup>
-	);
+    <hgroup className="header-group">
+      <h2 className="header-name" style={{ margin: "0", paddingRight: "15px" }}>
+        Hi, {currentUser.username}!
+      </h2>
+      <button className="header-button" onClick={logout}>
+        Log Out
+      </button>
+    </hgroup>
+  );
 
 	return currentUser ? personalWelcome() : sessionLinks();
 };

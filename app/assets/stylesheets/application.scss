@@ -13,19 +13,129 @@
  */
 
 @import "bootstrap";
+@import url("https://fonts.googleapis.com/css?family=Montserrat|Sacramento&display=swap");
 
+*:focus {
+    outline: none;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
 
 ul {
   list-style-type: none;
   padding: 0;
 }
 
+input.middle:focus {
+    outline-width: 0;
+}
+
+// NAVBAR
+
+.logo {
+  display: flex;
+  align-items: center;
+  font-family: 'Sacramento', cursive;
+}
+
+.tree-logo {
+  width: 50px;
+}
+
+.logo-text {
+  padding-top: 10px;
+}
+
 .header-nav {
   display: flex;
   align-items: center;
-  padding: 15px;
+  padding: 10px 15px 10px 15px;
   justify-content: space-between;
+  border-bottom: 1px solid lightgray;
+  background: white;
+  width: 100%;
+  position: fixed;
 }
+
+.header-group {
+  display: flex;
+  flex-direction: row;
+}
+
+.header-button {
+  border-radius: 5px;
+  color: saddlebrown;
+  border: none;
+}
+
+.header-button:hover {
+  color: floralwhite;
+  background: saddlebrown;
+}
+
+.header-name {
+  font-size: 24px;
+}
+
+// LOGIN PAGE
+
+
+// SEARCH PAGE
+
+.splash-page-jumbo {
+  // margin-top: 85px;
+  height: 500px;
+  background-image: url(https://images.unsplash.com/photo-1476275466078-4007374efbbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1014&q=80);
+  color: white;
+}
+
+.search-box {
+  display: flex;
+  justify-content: center;
+}
+
+.search-bar {
+    width: 35%;
+    border-radius: 20px;
+    border: 1px solid rgba(0,0,0,0.6);
+    padding: 5px;
+    padding-left: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.search-icon {
+  display: flex;
+  align-items: center;
+}
+
+.search-icon:hover {
+  transform: scale(0.99);
+  color: #2ECC40;
+}
+
+.search-icon-button {
+  padding-right: 7px;
+  border: none;
+}
+
+.search-icon-button:hover {
+  color: #2ECC40;
+}
+
+.book-icon {
+  padding-left: 7px;
+}
+
+#books-search {
+  border: none;
+  width: 100%;
+  -webkit-appearance: none;
+  padding-left: 10px;
+}
+// DISPLAY INDEXES
 
 .book-index-item {
     display: flex;
