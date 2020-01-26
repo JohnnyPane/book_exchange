@@ -56,7 +56,7 @@ input.middle:focus {
   border-bottom: 1px solid lightgray;
   background: white;
   width: 100%;
-  position: fixed;
+  // position: fixed;
 }
 
 .header-group {
@@ -205,4 +205,10 @@ input.middle:focus {
 
 .wish-index-book-img {
   height: 66px;
+}
+
+// EXCHANGE LISTS
+
+.exchange-list-index > h1 {
+  padding-top: 150px;
 }

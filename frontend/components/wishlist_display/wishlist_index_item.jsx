@@ -1,5 +1,5 @@
 import React from 'react';
-import WishlistIndex from './wishlist_index';
+
 
 class WishlistIndexItem extends React.Component {
   constructor(props) {
@@ -9,7 +9,7 @@ class WishlistIndexItem extends React.Component {
   render() {
     const { title, genre, books } = this.props.list;
     console.log(this.props)
-    Object.keys(books).map(book => console.log(books[book]))
+    // Object.keys(books).map(book => console.log(books[book]))
     return (
       <div className="wishlist-index-item">
         <div className="wishlist-index-titles">

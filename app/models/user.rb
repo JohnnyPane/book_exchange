@@ -12,6 +12,9 @@ class User < ApplicationRecord
   has_many :wishlists,
     foreign_key: :author_id
 
+  has_many :exchange_lists,
+    foreign_key: :author_id
+
   after_initialize :ensure_session_token
 
 	def self.find_by_credentials(username, password)

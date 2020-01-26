@@ -5,23 +5,29 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+# Wishlist.delete_all;
+# ExchangeList.delete_all;
+# Book.delete_all;
 
+# Wishlist.create!(
+#   title: 'Tolkien',
+#   genre: 'Fantasy',
+#   author_id: 1
+# )
 
-Wishlist.create!(
-  title: 'Tolkien',
-  genre: 'Fantasy',
-  author_id: 1
-)
+# Wishlist.create!(
+#   title: 'Fiction',
+#   genre: 'Crime',
+#   author_id: 1
+# )
 
-Wishlist.create!(
-  title: 'Fiction',
-  genre: 'Crime',
-  author_id: 1
-)
+# ExchangeList.create!(
+#   author_id: 1
+# )
 
-ExchangeList.create!(
-  author_id: 1
-)
+# ExchangeList.create!(
+#   author_id: 2
+# )
 
 
 Book.create!(
@@ -30,7 +36,8 @@ Book.create!(
   description: 'A delightfully good book',
   imageURL: 'http://books.google.com/books/content?id=5iTebBW-w7QC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api',
   author_id: 1,
-  wishlist_id: 1
+  wishlist_id: 21,
+  exchange_list_id: nil
 )
 
 Book.create!(
@@ -39,7 +46,8 @@ Book.create!(
   description: "Best children's book of all time",
   imageURL: 'http://books.google.com/books/content?id=pD6arNyKyi8C&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api',
   author_id: 1,
-  wishlist_id: 2
+  wishlist_id: 22,
+  exchange_list_id: nil
 )
 
 Book.create!(
@@ -48,6 +56,17 @@ Book.create!(
   description: "Best children's book of all time",
   imageURL: 'http://books.google.com/books/content?id=pD6arNyKyi8C&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api',
   author_id: 1,
-  exchange_list_id: 1
+  wishlist_id: nil,
+  exchange_list_id: 20
+)
+
+Book.create!(
+  title: 'Harry Potter and the Chamber of Secrets',
+  authors: 'J.K. Rowling',
+  description: 'A delightfully good book',
+  imageURL: 'http://books.google.com/books/content?id=5iTebBW-w7QC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api',
+  author_id: 1,
+  wishlist_id: nil,
+  exchange_list_id: 21
 )
 
