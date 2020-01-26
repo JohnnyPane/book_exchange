@@ -8,7 +8,7 @@
 
 
 Wishlist.create!(
-  title: 'Fantasy',
+  title: 'Tolkien',
   genre: 'Fantasy',
   author_id: 1
 )
@@ -18,6 +18,11 @@ Wishlist.create!(
   genre: 'Crime',
   author_id: 1
 )
+
+ExchangeList.create!(
+  author_id: 1
+)
+
 
 Book.create!(
   title: 'Harry Potter and the Chamber of Secrets',
@@ -36,3 +41,13 @@ Book.create!(
   author_id: 1,
   wishlist_id: 2
 )
+
+Book.create!(
+  title: 'The Hobbit, Or, There and Back Again',
+  authors: 'J.R.R. Tolkien',
+  description: "Best children's book of all time",
+  imageURL: 'http://books.google.com/books/content?id=pD6arNyKyi8C&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api',
+  author_id: 1,
+  exchange_list_id: 1
+)
+

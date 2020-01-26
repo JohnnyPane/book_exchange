@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 class SessionForm extends React.Component {
   constructor(props) {
     super(props);
@@ -37,7 +38,6 @@ class SessionForm extends React.Component {
   render() {
     return (
       <div className="login-form-container">
-
         <form onSubmit={this.handleSubmit} className="login-form-box">
           Welcome to the Book Exchange
           <br />

@@ -13,7 +13,7 @@ import WishlistIndexContainer from './wishlist_display/wishlist_index_container'
 const App = () => (
   <div>
     <header>
-      <nav className="header-nav nav sticky-top">
+      <nav className="header-nav nav">
         <div className="logo">
           <img
             src="https://images.all-free-download.com/images/graphiclarge/creative_tree_logo_vector_graphics_587279.jpg"

@@ -6,5 +6,10 @@ class Book < ApplicationRecord
     foreign_key: :author_id,
     class_name: :Wishlist
 
+  belongs_to :exchange_list,
+    primary_key: :id,
+    foreign_key: :author_id,
+    class_name: :ExchangeList
+
   belongs_to :user, optional: true
 end
