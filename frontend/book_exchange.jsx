@@ -7,6 +7,7 @@ import configureStore from './store/store';
 import { fetchBooks } from './util/book_api_util';
 import { fetchWishlists, fetchWishlist } from './actions/wishlist_actions'
 import { bookSearch } from './util/google_book_api_search';
+import { createBook } from './util/book_api_util'
 
 document.addEventListener("DOMContentLoaded", () => {
   let store;
@@ -27,6 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
   window.fetchWishlists = fetchWishlists
   window.dispatch = store.dispatch;
   window.getState = store.getState;
+  window.createBook = createBook;
   const root = document.getElementById("root");
   ReactDOM.render(<Root store={store} />, root);
 });

@@ -28,6 +28,6 @@ class Api::BooksController < ApplicationController
   private
 
   def book_params
-    params.permit(:title, :authors, :description, :imageURL, :author_id, :wishlist_id)
+    params.permit(:title, :authors, :description, :imageURL, :author_id, :wishlist_id, :exchange_list_id)
   end
 end

@@ -11,11 +11,22 @@ class BookIndex extends React.Component {
   componentDidMount() {
     this.props.fetchBooks();
     this.props.fetchWishlists();
+    this.props.fetchExchangeLists();
     console.log(this.props);
   }
 
   render() {
-    const { userId, books, googleBooks, searchedBooks, createBook, wishlists, fetchWishlists } = this.props;
+    const {
+      userId,
+      books,
+      googleBooks,
+      searchedBooks,
+      createBook,
+      wishlists,
+      fetchWishlists,
+      exchangeLists,
+      fetchExchangeLists
+    } = this.props;
     console.log(this.props, "props")
     return (
       <div className="book-index">
@@ -27,6 +38,8 @@ class BookIndex extends React.Component {
             userId={userId}
             wishlists={wishlists}
             fetchWishlists={fetchWishlists}
+            exchangeLists={exchangeLists}
+            fetchExchangeLists={fetchExchangeLists}
           />
         </div>
         <ul className="book-index-list">

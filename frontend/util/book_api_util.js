@@ -9,7 +9,7 @@ export const fetchBooks = data => (
 export const fetchBook = id => (
   $.ajax({
     method: 'GET',
-    url: `api/benches/${id}`
+    url: `api/books/${id}`
   })
 );
 
@@ -17,6 +17,6 @@ export const createBook = book => (
   $.ajax({
     method: 'POST',
     url: '/api/books',
-    data: { book }
+    data: book
   })
 );

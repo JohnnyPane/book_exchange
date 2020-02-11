@@ -22,7 +22,7 @@ class Api::ExchangeListsController < ApplicationController
 
   private 
 
-  def exhange_list_params
+  def exchange_list_params
     params.require(:exchangeList).permit(:author_id)
   end
 end
