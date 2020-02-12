@@ -6,15 +6,24 @@ class SearchedBookIndexItem extends React.Component {
     super(props);
     this.state = {
       wishlist_id: "",
-      button_title: ""
+      button_title: "",
+      wishlist_index: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleExchangeListSubmit = this.handleExchangeListSubmit.bind(this)
+    this.handleExchangeListSubmit = this.handleExchangeListSubmit.bind(this);
     this.update = this.update.bind(this);
+    this.updateListIdAndIndex = this.updateListIdAndIndex.bind(this);
   }
 
   update(property) {
     return e => this.setState({ [property]: e.currentTarget.value });
+  }
+
+  updateListIdAndIndex(id) {
+    return e => {
+      this.setState({ wishlist_index: e.currentTarget.value });
+      this.setState({ wishlist_id: id });
+    };
   }
 
   // Attach a book to a wishlist
@@ -25,12 +34,12 @@ class SearchedBookIndexItem extends React.Component {
       authors: this.props.book.volumeInfo.authors.join(", "),
       imageURL: this.props.book.volumeInfo.imageLinks.smallThumbnail,
       description: this.props.book.volumeInfo.description,
-      wishlist_id: this.state.wishlist_id,
+      wishlist_id: this.state.wishlist_id
     };
-    if (this.state.wishlist_id.length > 0) {
-      console.log(newBook)
+    console.log(this.state.wishlist_index.length)
+    if (this.state.wishlist_index.length > 0) {
+      console.log(newBook);
       this.props.createBook(newBook);
-      console.log(newBook, "new book 2")
     } else {
       alert("please select a wishlist to add the book to");
     }
@@ -45,9 +54,7 @@ class SearchedBookIndexItem extends React.Component {
       description: this.props.book.volumeInfo.description,
       exchange_list_id: this.props.exchangeLists[0].id
     };
-    console.log(newBook)
     this.props.createBook(newBook);
-    console.log(newBook)
   }
 
   render() {
@@ -61,10 +68,10 @@ class SearchedBookIndexItem extends React.Component {
     const updateDropdownName = () => {
       const titles = [];
       wishlists.map(list => titles.push(list.title));
-      return titles[this.state.wishlist_id];
+      return titles[this.state.wishlist_index];
     };
 
-    console.log(wishlists, "lists")
+    console.log(wishlists, "lists");
 
     return (
       <div className="searched-index-wrapper">
@@ -85,20 +92,19 @@ class SearchedBookIndexItem extends React.Component {
             value={this.state.button_title}
             onClick={this.update("button_title")}
           >
-            {this.state.wishlist_id.length < 1
+            {this.state.wishlist_index.length < 1
               ? "choose a wishlist"
               : updateDropdownName()}
           </button>
           <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
             {wishlists.map((list, i) => {
-  
               return (
                 <button
                   className="dropdown-item"
                   type="button"
                   key={i}
-                  value={list.id}
-                  onClick={this.update("wishlist_id")}
+                  value={i}
+                  onClick={this.updateListIdAndIndex(list.id)}
                 >
                   {list.title}
                 </button>
@@ -111,7 +117,8 @@ class SearchedBookIndexItem extends React.Component {
         </button>
         <button
           className="create-book-btn"
-          onClick={this.handleExchangeListSubmit}
+          onClick={console.log(this.state)}
+          // onClick={this.handleExchangeListSubmit}
         >
           Add to Exchange List
         </button>
