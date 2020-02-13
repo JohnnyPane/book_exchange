@@ -58,11 +58,14 @@ class SearchedBookIndexItem extends React.Component {
   }
 
   render() {
+    console.log(this.props, "search props")
     const { volumeInfo } = this.props.book;
     const { wishlists } = this.props;
 
+    const dataTarget = "#" + this.props.book.id
+
     const renderImage = () => (
-      <img src={volumeInfo.imageLinks.smallThumbnail}></img>
+      <img className="search-book-image" src={volumeInfo.imageLinks.smallThumbnail}></img>
     );
 
     const updateDropdownName = () => {
@@ -76,10 +79,55 @@ class SearchedBookIndexItem extends React.Component {
     return (
       <div className="searched-index-wrapper">
         <div className="book-index-list">
-          <h1>{volumeInfo.title}</h1>
-          <h3>{volumeInfo.authors}</h3>
-          <p>{volumeInfo.description}</p>
           {volumeInfo.hasOwnProperty("imageLinks") ? renderImage() : null}
+          <div className="book-search-titles">
+            <h1>{volumeInfo.title}</h1>
+            <h3>{volumeInfo.authors}</h3>
+          </div>
+          <div className="book-search-description">
+            {/* <p>
+              <button
+                class="btn btn-primary"
+                type="button"
+                data-toggle="collapse"
+                data-target="#collapseExample"
+                aria-expanded="false"
+                aria-controls="collapseExample"
+              >
+                Description
+              </button>
+            </p>
+            <div class="collapse" id="collapseExample">
+              <div class="card card-body">{volumeInfo.description}</div>
+            </div> */}
+            <div id="accordion">
+              <div class="card">
+                <div class="card-header" id="headingOne">
+                  <h5 class="mb-0">
+                    <button
+                      class="btn btn-link"
+                      data-toggle="collapse"
+                      data-target={dataTarget}
+                      aria-expanded="true"
+                      aria-controls="collapseOne"
+                    >
+                      Description
+                    </button>
+                  </h5>
+                </div>
+
+                <div
+                  id={this.props.book.id}
+                  class="collapse"
+                  aria-labelledby="headingOne"
+                  data-parent="#accordion"
+                >
+                  <div class="card-body">{volumeInfo.description}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {/* <p>{volumeInfo.description}</p> */}
         </div>
         <div className="dropdown">
           <button
@@ -117,8 +165,7 @@ class SearchedBookIndexItem extends React.Component {
         </button>
         <button
           className="create-book-btn"
-          onClick={console.log(this.state)}
-          // onClick={this.handleExchangeListSubmit}
+          onClick={this.handleExchangeListSubmit}
         >
           Add to Exchange List
         </button>

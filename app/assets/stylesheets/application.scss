@@ -112,6 +112,38 @@ input.middle:focus {
 
 // SEARCH PAGE
 
+.searched-index-wrapper {
+  width: 80%;
+}
+
+.searched-books{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.book-index-list {
+  display: flex;
+  // height: 200px;
+}
+
+.search-book-image {
+  height: fit-content;
+}
+
+.book-search-titles {
+  display: flex;
+  flex-direction: column;
+  white-space: nowrap;
+  margin-right: 20px;
+}
+
+.book-search-description {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
 .splash-page-jumbo {
   // margin-top: 85px;
   height: 500px;

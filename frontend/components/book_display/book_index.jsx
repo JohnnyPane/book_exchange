@@ -12,7 +12,6 @@ class BookIndex extends React.Component {
     this.props.fetchBooks();
     this.props.fetchWishlists();
     this.props.fetchExchangeLists();
-    console.log(this.props);
   }
 
   render() {
@@ -27,7 +26,7 @@ class BookIndex extends React.Component {
       exchangeLists,
       fetchExchangeLists
     } = this.props;
-    console.log(this.props, "props")
+   
     return (
       <div className="book-index">
         <div className ="book-search">
@@ -42,14 +41,14 @@ class BookIndex extends React.Component {
             fetchExchangeLists={fetchExchangeLists}
           />
         </div>
-        <ul className="book-index-list">
+        {/* <ul className="book-index-list">
           {books.map(book => (
             <BookIndexItem
               book={book}
               key={book.id}
             />
           ))}
-        </ul>
+        </ul> */}
       </div>
     )
   }
