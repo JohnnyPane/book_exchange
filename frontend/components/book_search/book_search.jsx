@@ -4,6 +4,7 @@ import SearchedBookIndexItem from './searched_book_index_item';
 import ReactAutocomplete from 'react-autocomplete';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook, faSearch } from "@fortawesome/free-solid-svg-icons";
+// import booksImage from "../../../app/assets/images/books_header.jpg"
 
 class BookSearch extends React.Component {
   constructor(props) {
@@ -49,9 +50,10 @@ class BookSearch extends React.Component {
       <div className="main-search-page">
         <div className="jumbotron jumbotron-fluid splash-page-jumbo">
           <div className="container">
-            {/* <h1 class="display-4">Book Exchange</h1> */}
+           
+            <h1 class="display-4">Book Exchange</h1>
             <p className="lead">
-              {/* A place for like-minded readers to discover new books, start a book club, make new friends, and explore the world of literature */}
+              A place for like-minded readers to discover new books, start a book club, make new friends, and explore the world of literature
             </p>
           </div>
         </div>
