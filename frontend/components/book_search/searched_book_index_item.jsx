@@ -79,11 +79,67 @@ class SearchedBookIndexItem extends React.Component {
     return (
       <div className="searched-index-wrapper">
         <div className="book-index-list">
-          {volumeInfo.hasOwnProperty("imageLinks") ? renderImage() : null}
-          <div className="book-search-titles">
-            <h1>{volumeInfo.title}</h1>
-            <h3>{volumeInfo.authors}</h3>
+          <div className="search-book-title-items">
+            <div className="search-title-text">
+              {volumeInfo.hasOwnProperty("imageLinks") ? renderImage() : null}
+              <div className="book-search-titles">
+                <div className="search-title-author">
+                  <h5>{volumeInfo.title}</h5>
+                  <h6>{volumeInfo.authors}</h6>
+                </div>
+                <div className="dropdown wishlist-dropdown">
+                  <button
+                    className="btn btn-secondary dropdown-toggle wishlist-dropdown"
+                    type="button"
+                    id="dropdownMenu2"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    value={this.state.button_title}
+                    onClick={this.update("button_title")}
+                  >
+                    {this.state.wishlist_index.length < 1
+                      ? "Choose a Wishlist"
+                      : updateDropdownName()}
+                  </button>
+
+                  <div
+                    className="dropdown-menu"
+                    aria-labelledby="dropdownMenu2"
+                  >
+                    {wishlists.map((list, i) => {
+                      return (
+                        <button
+                          className="dropdown-item"
+                          type="button"
+                          key={i}
+                          value={i}
+                          onClick={this.updateListIdAndIndex(list.id)}
+                        >
+                          {list.title}
+                        </button>
+                      );
+                    })}
+                  </div>
+                </div>
+                <div className="search-buttons">
+                  <button
+                    className="create-book-btn"
+                    onClick={this.handleSubmit}
+                  >
+                    Add to Wish List
+                  </button> 
+                  <button
+                    className="create-exchange-book-btn"
+                    onClick={this.handleExchangeListSubmit}
+                  >
+                    Add to Exchange List
+                  </button>
+                </div>
+              </div>
+            </div>
           </div>
+
           <div className="book-search-description">
             {/* <p>
               <button
@@ -110,6 +166,7 @@ class SearchedBookIndexItem extends React.Component {
                       data-target={dataTarget}
                       aria-expanded="true"
                       aria-controls="collapseOne"
+                      style={{ color: "saddlebrown" }}
                     >
                       Description
                     </button>
@@ -129,46 +186,6 @@ class SearchedBookIndexItem extends React.Component {
           </div>
           {/* <p>{volumeInfo.description}</p> */}
         </div>
-        <div className="dropdown">
-          <button
-            className="btn btn-secondary dropdown-toggle"
-            type="button"
-            id="dropdownMenu2"
-            data-toggle="dropdown"
-            aria-haspopup="true"
-            aria-expanded="false"
-            value={this.state.button_title}
-            onClick={this.update("button_title")}
-          >
-            {this.state.wishlist_index.length < 1
-              ? "choose a wishlist"
-              : updateDropdownName()}
-          </button>
-          <div className="dropdown-menu" aria-labelledby="dropdownMenu2">
-            {wishlists.map((list, i) => {
-              return (
-                <button
-                  className="dropdown-item"
-                  type="button"
-                  key={i}
-                  value={i}
-                  onClick={this.updateListIdAndIndex(list.id)}
-                >
-                  {list.title}
-                </button>
-              );
-            })}
-          </div>
-        </div>
-        <button className="create-book-btn" onClick={this.handleSubmit}>
-          Add to Wish List
-        </button>
-        <button
-          className="create-book-btn"
-          onClick={this.handleExchangeListSubmit}
-        >
-          Add to Exchange List
-        </button>
       </div>
     );
   }

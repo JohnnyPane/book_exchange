@@ -113,7 +113,7 @@ input.middle:focus {
 // SEARCH PAGE
 
 .searched-index-wrapper {
-  width: 80%;
+  width: 60%;
 }
 
 .searched-books{
@@ -124,7 +124,27 @@ input.middle:focus {
 
 .book-index-list {
   display: flex;
-  // height: 200px;
+  margin-top: 15px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.125);
+  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.search-book-title-items {
+  display: flex;
+  flex-direction: column;
+}
+
+.search-title-text {
+  display: flex;
+  flex-direction: row;
+ 
+}
+
+.search-title-author {
+  margin-left: 5px;
 }
 
 .search-book-image {
@@ -134,8 +154,36 @@ input.middle:focus {
 .book-search-titles {
   display: flex;
   flex-direction: column;
-  white-space: nowrap;
-  margin-right: 20px;
+  margin-right: 5px;
+  width: 230px;
+}
+
+.wishlist-dropdown {
+  margin: 0  0 5px 2px;
+}
+
+.create-book-btn {
+  margin-bottom: 5px;
+  margin-left: 5px;
+  border-radius: 5px;
+  border: none;
+}
+
+.create-book-btn:hover {
+  background-color: rgba(139, 69, 19, 0.96);
+  color: white;
+}
+
+.create-exchange-book-btn {
+  margin-bottom: 5px;
+  margin-left: 5px;
+  border-radius: 5px;
+  border: none;
+}
+
+.create-exchange-book-btn:hover {
+  background-color: rgba(0, 128, 0, 0.85);
+  color: white;
 }
 
 .book-search-description {
@@ -159,7 +207,7 @@ input.middle:focus {
 .search-bar {
     width: 35%;
     border-radius: 20px;
-    border: 1px solid rgba(0,0,0,0.6);
+    border: 1px solid rgba(0,0,0,0.225);
     padding: 5px;
     padding-left: 10px;
     display: flex;
