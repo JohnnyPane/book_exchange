@@ -7,12 +7,15 @@ class SearchedBookIndexItem extends React.Component {
     this.state = {
       wishlist_id: "",
       button_title: "",
-      wishlist_index: ""
+      wishlist_index: "",
+      wishlist_name: "",
+      genre: ""
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleExchangeListSubmit = this.handleExchangeListSubmit.bind(this);
     this.update = this.update.bind(this);
     this.updateListIdAndIndex = this.updateListIdAndIndex.bind(this);
+    this.updateWislistName = this.updateWislistName.bind(this);
   }
 
   update(property) {
@@ -24,6 +27,10 @@ class SearchedBookIndexItem extends React.Component {
       this.setState({ wishlist_index: e.currentTarget.value });
       this.setState({ wishlist_id: id });
     };
+  }
+
+  updateWislistName(e) {
+    return e => this.setState({ wishlist_name: e.currentTarget.value })
   }
 
   // Attach a book to a wishlist
@@ -44,6 +51,8 @@ class SearchedBookIndexItem extends React.Component {
       alert("please select a wishlist to add the book to");
     }
   }
+
+
 
   handleExchangeListSubmit(e) {
     e.preventDefault();
@@ -120,6 +129,42 @@ class SearchedBookIndexItem extends React.Component {
                         </button>
                       );
                     })}
+                    <form class="px-4 py-3">
+                      <div class="form-group">
+                        {/* <label for="wishlistInput">Email address</label> */}
+                        <input
+                          type="text"
+                          class="form-control"
+                       
+                          // value={this.state.wishlist_name}
+                          placeholder="Create Wishlist"
+                          onChange={e =>
+                            this.setState({ wishlist_name: e.target.value })
+                          }
+                        ></input>
+                        {/* <input
+                          type="text"
+                          class="form-control"
+                          id="genreINput"
+                          // value={this.state.wishlist_name}
+                          placeholder="genre"
+                          onChange={e =>
+                            this.setState({ genre: e.target.value })
+                          }
+                        ></input> */}
+                      </div>
+                      <button
+                        type="submit"
+                        class="btn btn-primary"
+                        onClick={() =>
+                          this.props.createWishlist({
+                            title: this.state.wishlist_name
+                          })
+                        }
+                      >
+                        Create
+                      </button>
+                    </form>
                   </div>
                 </div>
                 <div className="search-buttons">
@@ -128,7 +173,7 @@ class SearchedBookIndexItem extends React.Component {
                     onClick={this.handleSubmit}
                   >
                     Add to Wish List
-                  </button> 
+                  </button>
                   <button
                     className="create-exchange-book-btn"
                     onClick={this.handleExchangeListSubmit}
@@ -157,11 +202,11 @@ class SearchedBookIndexItem extends React.Component {
               <div class="card card-body">{volumeInfo.description}</div>
             </div> */}
             <div id="accordion">
-              <div class="card">
-                <div class="card-header" id="headingOne">
-                  <h5 class="mb-0">
+              <div className="card">
+                <div className="card-header" id="headingOne">
+                  <h5 className="mb-0">
                     <button
-                      class="btn btn-link"
+                      className="btn btn-link"
                       data-toggle="collapse"
                       data-target={dataTarget}
                       aria-expanded="true"
@@ -175,11 +220,11 @@ class SearchedBookIndexItem extends React.Component {
 
                 <div
                   id={this.props.book.id}
-                  class="collapse"
+                  className="collapse"
                   aria-labelledby="headingOne"
                   data-parent="#accordion"
                 >
-                  <div class="card-body">{volumeInfo.description}</div>
+                  <div className="card-body">{volumeInfo.description}</div>
                 </div>
               </div>
             </div>

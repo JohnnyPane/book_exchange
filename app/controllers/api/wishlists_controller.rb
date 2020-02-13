@@ -1,5 +1,7 @@
 class Api::WishlistsController < ApplicationController
-  
+  before_action :require_logged_in, only: [:create]
+  skip_before_action :verify_authenticity_token
+
 
   def index
     wishlists = Wishlist.all.where(author_id: current_user)
@@ -8,8 +10,15 @@ class Api::WishlistsController < ApplicationController
   end
 
   def create
-    @wishlist = Wishlist.create!(wish_list_params)
-    render :show
+    @wishlist = Wishlist.new(wish_list_params)
+
+    @wishlist.author_id = current_user.id
+
+    if @wishlist.save
+      render :show
+    else 
+      render @wishlist.errors.full_messages, status: 401
+    end
   end
 
   def destroy
@@ -23,6 +32,6 @@ class Api::WishlistsController < ApplicationController
   private 
 
   def wish_list_params
-    params.require(:wishlist).permit(:title, :author_id, :genre)
+    params.permit(:title, :author_id, :genre)
   end
 end

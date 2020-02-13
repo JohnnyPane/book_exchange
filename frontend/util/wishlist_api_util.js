@@ -13,5 +13,12 @@ export const fetchWishlist = id => (
   })
 );
 
+export const createWishlist = data => (
+  $.ajax({
+  method: "POST",
+  url: "/api/wishlists",
+  data: data 
+  })
+);
 
 // add destroy and update

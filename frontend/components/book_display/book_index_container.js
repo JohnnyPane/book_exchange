@@ -4,7 +4,7 @@ import BookIndex from './book_index';
 import { asArray } from '../../reducers/selectors';
 import { fetchBooks, createBook } from '../../actions/book_actions';
 import { googleBooks } from '../../actions/book_actions';
-import { fetchWishlists } from '../../actions/wishlist_actions';
+import { fetchWishlists, createWishlist } from '../../actions/wishlist_actions';
 import { fetchExchangeLists } from '../../actions/exchange_list_actions';
 
 
@@ -28,7 +28,8 @@ const mapDispatchToProps = dispatch => ({
   googleBooks: input => dispatch(googleBooks(input)),
   createBook: book => dispatch(createBook(book)),
   fetchWishlists: () => dispatch(fetchWishlists()),
-  fetchExchangeLists: () => dispatch(fetchExchangeLists())
+  fetchExchangeLists: () => dispatch(fetchExchangeLists()),
+  createWishlist: list => dispatch(createWishlist(list))
 });
 
 export default connect(

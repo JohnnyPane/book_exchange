@@ -30,9 +30,17 @@ class BookSearch extends React.Component {
 
   render() {
 
-    const { userId, searchedBooks, createBook, fetchWishlists, wishlists, exchangeLists } = this.props;
+    const {
+      userId,
+      searchedBooks,
+      createBook,
+      fetchWishlists,
+      wishlists,
+      exchangeLists,
+      createWishlist
+    } = this.props;
 
-    const createSearchList = () => (
+    const createSearchList = () =>
       searchedBooks[2].map((book, i) => (
         <SearchedBookIndexItem
           book={book}
@@ -42,16 +50,16 @@ class BookSearch extends React.Component {
           wishlists={wishlists}
           fetchWishlists={fetchWishlists}
           exchangeLists={exchangeLists}
+          createWishlist={createWishlist}
         />
-      ))
-    )
+      ));
     
     return (
       <div className="main-search-page">
         <div className="jumbotron jumbotron-fluid splash-page-jumbo">
           <div className="container">
            
-            <h1 class="display-4">Book Exchange</h1>
+            <h1 className="display-4">Book Exchange</h1>
             <p className="lead">
               A place for like-minded readers to discover new books, start a book club, make new friends, and explore the world of literature
             </p>

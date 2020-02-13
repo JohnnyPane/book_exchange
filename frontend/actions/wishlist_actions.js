@@ -26,3 +26,9 @@ export const fetchWishlist = id => dispatch => (
     dispatch(receiveWishlist(list))
   ))
 );
+
+export const createWishlist = list => dispatch => (
+  APIUtil.createWishlist(list).then(list => (
+    dispatch(receiveWishlist(list))
+  ))
+);

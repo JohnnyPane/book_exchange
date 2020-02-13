@@ -13,7 +13,7 @@ const wishlistsReducer = (state = {}, action) => {
     case RECEIVE_WISHLISTS:
       return action.lists;
     case RECEIVE_WISHLIST:
-      const newList = { [action.list.id]: action.list };
+      const newList = { [action.wishlist.id]: action.wishlist };
       return Object.assign({}, state, newList);
     // case RECEIVE_BOOKS:
     //   const { book } = action;
