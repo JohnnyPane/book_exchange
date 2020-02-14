@@ -165,8 +165,13 @@ input.middle:focus {
   width: 230px;
 }
 
+.search-image-wrapper {
+  width: 128px;
+}
+
 .wishlist-dropdown {
   margin: 0  0 5px 2px;
+  width: fit-content;
 }
 
 .create-book-btn {
@@ -308,4 +313,12 @@ input.middle:focus {
 
 .exchange-list-index > h1 {
   padding-top: 150px;
+}
+
+// BOOTSTRAP OVERRIDE
+
+
+.dropdown-menu.show {
+    display: block;
+    width: 226px;
 }

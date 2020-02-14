@@ -1,5 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBook, faSearch } from "@fortawesome/free-solid-svg-icons";
 
 class SearchedBookIndexItem extends React.Component {
   constructor(props) {
@@ -9,7 +11,8 @@ class SearchedBookIndexItem extends React.Component {
       button_title: "",
       wishlist_index: "",
       wishlist_name: "",
-      genre: ""
+      genre: "",
+      warning: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleExchangeListSubmit = this.handleExchangeListSubmit.bind(this);
@@ -26,6 +29,7 @@ class SearchedBookIndexItem extends React.Component {
     return e => {
       this.setState({ wishlist_index: e.currentTarget.value });
       this.setState({ wishlist_id: id });
+      this.setState({ warning: false })
     };
   }
 
@@ -36,11 +40,31 @@ class SearchedBookIndexItem extends React.Component {
   // Attach a book to a wishlist
   handleSubmit(e) {
     e.preventDefault();
+
+    let author, descript, image;
+
+    if (this.props.book.volumeInfo.authors) {
+      author = this.props.book.volumeInfo.authors.join(", ");
+    } else {
+      author = "None"
+    }
+
+    if (this.props.book.volumeInfo.description) {
+      descript = this.props.book.volumeInfo.description;
+    } else {
+     descript = "No description available"
+    }
+
+    if (this.props.book.volumeInfo.imageLinks) {
+      image = this.props.book.volumeInfo.imageLinks.smallThumbnail;
+    } else {
+      image = null;
+    }
     const newBook = {
       title: this.props.book.volumeInfo.title,
-      authors: this.props.book.volumeInfo.authors.join(", "),
-      imageURL: this.props.book.volumeInfo.imageLinks.smallThumbnail,
-      description: this.props.book.volumeInfo.description,
+      authors: author,
+      imageURL: image,
+      description: descript,
       wishlist_id: this.state.wishlist_id
     };
     console.log(this.state.wishlist_index.length)
@@ -56,11 +80,31 @@ class SearchedBookIndexItem extends React.Component {
 
   handleExchangeListSubmit(e) {
     e.preventDefault();
+    let author, descript, image;
+
+    if (this.props.book.volumeInfo.authors) {
+      author = this.props.book.volumeInfo.authors.join(", ");
+    } else {
+      author = "None";
+    }
+
+    if (this.props.book.volumeInfo.description) {
+      descript = this.props.book.volumeInfo.description;
+    } else {
+      descript = "No description available";
+    }
+
+    if (this.props.volumeInfo.imageLinks) {
+      image = this.props.volumeInfo.imageLinks.smallThumbnail;
+    } else {
+      image = null;
+    }
+
     const newBook = {
       title: this.props.book.volumeInfo.title,
-      authors: this.props.book.volumeInfo.authors.join(", "),
-      imageURL: this.props.book.volumeInfo.imageLinks.smallThumbnail,
-      description: this.props.book.volumeInfo.description,
+      authors: author,
+      imageURL: image,
+      description: descript,
       exchange_list_id: this.props.exchangeLists[0].id
     };
     this.props.createBook(newBook);
@@ -74,14 +118,22 @@ class SearchedBookIndexItem extends React.Component {
     const dataTarget = "#" + this.props.book.id
 
     const renderImage = () => (
-      <img className="search-book-image" src={volumeInfo.imageLinks.smallThumbnail}></img>
+      <img className="search-book-image" src={volumeInfo.imageLinks.smallThumbnail} style={{borderRadius: "5px"}}></img>
     );
+
+    const renderWarning = () => (
+      <div class="alert alert-warning" role="alert">
+        Please Select a Wishlist
+      </div>
+    )
 
     const updateDropdownName = () => {
       const titles = [];
       wishlists.map(list => titles.push(list.title));
       return titles[this.state.wishlist_index];
     };
+
+    const genres = ["Fantasy", "Sci-Fi", "Horror", "Western", "Romance", "Thriller", "Mystery", "Detective", "Dystopia", "Memoir", "Biography", "Play", "Musical", "Satire", "Poetry", "Young Adult", "Children's Lit"]
 
     console.log(wishlists, "lists");
 
@@ -90,15 +142,24 @@ class SearchedBookIndexItem extends React.Component {
         <div className="book-index-list">
           <div className="search-book-title-items">
             <div className="search-title-text">
-              {volumeInfo.hasOwnProperty("imageLinks") ? renderImage() : null}
+              <div className="search-image-wrapper">
+                {volumeInfo.hasOwnProperty("imageLinks") ? (
+                  renderImage()
+                ) : (
+                  <FontAwesomeIcon
+                    icon={faBook}
+                    style={{ width: "128px", height: "160px", color: "green" }}
+                  />
+                )}
+              </div>
               <div className="book-search-titles">
                 <div className="search-title-author">
                   <h5>{volumeInfo.title}</h5>
                   <h6>{volumeInfo.authors}</h6>
                 </div>
-                <div className="dropdown wishlist-dropdown">
+                <div className="btn-group dropright wishlist-dropdown">
                   <button
-                    className="btn btn-secondary dropdown-toggle wishlist-dropdown"
+                    className="btn btn-dark dropdown-toggle wishlist-dropdown"
                     type="button"
                     id="dropdownMenu2"
                     data-toggle="dropdown"
@@ -129,36 +190,41 @@ class SearchedBookIndexItem extends React.Component {
                         </button>
                       );
                     })}
+
+                    <div class="dropdown-divider"></div>
+
                     <form class="px-4 py-3">
                       <div class="form-group">
                         {/* <label for="wishlistInput">Email address</label> */}
                         <input
                           type="text"
                           class="form-control"
-                       
-                          // value={this.state.wishlist_name}
                           placeholder="Create Wishlist"
                           onChange={e =>
                             this.setState({ wishlist_name: e.target.value })
                           }
                         ></input>
-                        {/* <input
+                      </div>
+
+                      <div class="form-group">
+                        {/* <label for="wishlistInput">Email address</label> */}
+                        <input
                           type="text"
                           class="form-control"
-                          id="genreINput"
-                          // value={this.state.wishlist_name}
-                          placeholder="genre"
+                          placeholder="Wishlist Genre"
                           onChange={e =>
                             this.setState({ genre: e.target.value })
                           }
-                        ></input> */}
+                        ></input>
                       </div>
+
                       <button
                         type="submit"
-                        class="btn btn-primary"
+                        class="btn btn-warning"
                         onClick={() =>
                           this.props.createWishlist({
-                            title: this.state.wishlist_name
+                            title: this.state.wishlist_name,
+                            genre: this.state.genre
                           })
                         }
                       >
@@ -168,12 +234,22 @@ class SearchedBookIndexItem extends React.Component {
                   </div>
                 </div>
                 <div className="search-buttons">
-                  <button
+                 {this.state.wishlist_index.length > 0 ? 
+                 <button
                     className="create-book-btn"
                     onClick={this.handleSubmit}
                   >
                     Add to Wish List
-                  </button>
+                  </button> :
+                  <button
+                    className="create-book-btn"
+                    onClick={() => this.setState({warning: true})}
+                  >
+                    Add to Wish List
+                 </button> }
+
+                  {this.state.warning ? (renderWarning()) : null}
+
                   <button
                     className="create-exchange-book-btn"
                     onClick={this.handleExchangeListSubmit}
@@ -224,7 +300,11 @@ class SearchedBookIndexItem extends React.Component {
                   aria-labelledby="headingOne"
                   data-parent="#accordion"
                 >
-                  <div className="card-body">{volumeInfo.description}</div>
+                  {volumeInfo.description ? (
+                    <div className="card-body">{volumeInfo.description}</div>
+                  ) : (
+                    <div className="card-body">No description available</div>
+                  )}
                 </div>
               </div>
             </div>

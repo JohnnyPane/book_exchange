@@ -1,5 +1,5 @@
 class Book < ApplicationRecord
-  validates :title, :authors, :description, :author_id, presence: true
+  validates :title, :authors, :author_id, presence: true
 
   belongs_to :wishlist,
     primary_key: :id,
