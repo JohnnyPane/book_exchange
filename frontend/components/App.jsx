@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 
 import WelcomeContainer from './welcome/welcome_container';
 import SignUpFormContainer from './session_form/signup_form_container';
@@ -14,22 +14,28 @@ const App = () => (
   <div>
     <header>
       <nav className="header-nav nav">
-        <div className="logo">
-          <img
-            src="https://images.all-free-download.com/images/graphiclarge/creative_tree_logo_vector_graphics_587279.jpg"
-            className="tree-logo"
-          ></img>
-          <h1 style={{ margin: "0" }} className="logo-text">
-            Book Exchange
-          </h1>
-        </div>
+        <Link to="/" className="logo-link">
+          <div className="logo">
+            <img
+              src="https://images.all-free-download.com/images/graphiclarge/creative_tree_logo_vector_graphics_587279.jpg"
+              className="tree-logo"
+            ></img>
+            <h1 style={{ margin: "0" }} className="logo-text">
+              Book Exchange
+            </h1>
+          </div>
+        </Link>
         <WelcomeContainer />
       </nav>
     </header>
     <AuthRoute exact path="/login" component={LoginFormContainer} />
     <AuthRoute exact path="/signup" component={SignUpFormContainer} />
     <ProtectedRoute exact path="/" component={BookIndexContainer} />
-    <ProtectedRoute exact path="/exchange_lists" component={ExchangeListIndexContainer} />
+    <ProtectedRoute
+      exact
+      path="/exchange_lists"
+      component={ExchangeListIndexContainer}
+    />
     <ProtectedRoute
       exact
       path="/wishlists"
