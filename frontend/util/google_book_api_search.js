@@ -6,3 +6,10 @@ export const bookSearch = input => (
   })
 );
 
+export const bestSellersList = input => (
+  $.ajax({
+    type: 'GET',
+    url: "https://api.nytimes.com/svc/books/v3/lists.json?list-name=" + input + "&api-key=bzVnxaTV8wb9KONOPTAkEv5dQWRovZmZ",
+    dataType: 'json',
+  })
+);

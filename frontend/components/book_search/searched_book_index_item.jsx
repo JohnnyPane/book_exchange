@@ -15,7 +15,8 @@ class SearchedBookIndexItem extends React.Component {
       wishlist_name: "",
       genre: "",
       warning: false,
-      book_added: false
+      book_added: false,
+      exchange_added: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleExchangeListSubmit = this.handleExchangeListSubmit.bind(this);
@@ -112,6 +113,7 @@ class SearchedBookIndexItem extends React.Component {
       exchange_list_id: this.props.exchangeLists[0].id
     };
     this.props.createBook(newBook);
+    this.setState({exchange_added: true})
   }
 
   render() {
@@ -126,9 +128,11 @@ class SearchedBookIndexItem extends React.Component {
     );
 
     const renderWarning = () => (
+      <Animated animationIn="slideInRight" animationOut="zoomOutLeft" isVisible={true}>
       <div class="alert alert-warning" role="alert">
         Please Select a Wishlist
       </div>
+      </Animated>
     )
 
     const updateDropdownName = () => {
@@ -144,142 +148,155 @@ class SearchedBookIndexItem extends React.Component {
     return (
       <div className="searched-index-wrapper">
         {/* <Animated animationIn="zoomIn" animationOut="fadeOut" isVisible={true}> */}
-          <div className="book-index-list">
-            <div className="search-book-title-items">
-              <div className="search-title-text">
-                <div className="search-image-wrapper">
-                  {volumeInfo.hasOwnProperty("imageLinks") ? (
-                    renderImage()
-                  ) : (
-                    <FontAwesomeIcon
-                      icon={faBook}
-                      style={{
-                        width: "128px",
-                        height: "160px",
-                        color: "green"
-                      }}
-                    />
-                  )}
+        <div className="book-index-list">
+          <div className="search-book-title-items">
+            <div className="search-title-text">
+              <div className="search-image-wrapper">
+                {volumeInfo.hasOwnProperty("imageLinks") ? (
+                  renderImage()
+                ) : (
+                  <FontAwesomeIcon
+                    icon={faBook}
+                    style={{
+                      width: "128px",
+                      height: "160px",
+                      color: "green"
+                    }}
+                  />
+                )}
+              </div>
+              <div className="book-search-titles">
+                <div className="search-title-author">
+                  <h5>{volumeInfo.title}</h5>
+                  <h6>{volumeInfo.authors}</h6>
                 </div>
-                <div className="book-search-titles">
-                  <div className="search-title-author">
-                    <h5>{volumeInfo.title}</h5>
-                    <h6>{volumeInfo.authors}</h6>
-                  </div>
-                  <div className="btn-group dropright wishlist-dropdown">
-                    <button
-                      className="btn btn-dark dropdown-toggle wishlist-dropdown"
-                      type="button"
-                      id="dropdownMenu2"
-                      data-toggle="dropdown"
-                      aria-haspopup="true"
-                      aria-expanded="false"
-                      value={this.state.button_title}
-                      onClick={this.update("button_title")}
-                    >
-                      {this.state.wishlist_index.length < 1
-                        ? "Choose a Wishlist"
-                        : updateDropdownName()}
-                    </button>
+                <div className="btn-group dropright wishlist-dropdown">
+                  <button
+                    className="btn btn-info dropdown-toggle wishlist-dropdown"
+                    type="button"
+                    id="dropdownMenu2"
+                    data-toggle="dropdown"
+                    aria-haspopup="true"
+                    aria-expanded="false"
+                    value={this.state.button_title}
+                    onClick={this.update("button_title")}
+                  >
+                    {this.state.wishlist_index.length < 1
+                      ? "Choose a Wishlist"
+                      : updateDropdownName()}
+                  </button>
 
-                    <div
-                      className="dropdown-menu"
-                      aria-labelledby="dropdownMenu2"
-                    >
-                      {wishlists.map((list, i) => {
-                        return (
-                          <button
-                            className="dropdown-item"
-                            type="button"
-                            key={i}
-                            value={i}
-                            onClick={this.updateListIdAndIndex(list.id)}
-                          >
-                            {list.title}
-                          </button>
-                        );
-                      })}
-
-                      <div class="dropdown-divider"></div>
-
-                      <form class="px-4 py-3">
-                        <div class="form-group">
-                          {/* <label for="wishlistInput">Email address</label> */}
-                          <input
-                            type="text"
-                            class="form-control"
-                            placeholder="Create Wishlist"
-                            onChange={e =>
-                              this.setState({ wishlist_name: e.target.value })
-                            }
-                          ></input>
-                        </div>
-
-                        <div class="form-group">
-                          {/* <label for="wishlistInput">Email address</label> */}
-                          <input
-                            type="text"
-                            class="form-control"
-                            placeholder="Wishlist Genre"
-                            onChange={e =>
-                              this.setState({ genre: e.target.value })
-                            }
-                          ></input>
-                        </div>
-
+                  <div
+                    className="dropdown-menu"
+                    aria-labelledby="dropdownMenu2"
+                  >
+                    {wishlists.map((list, i) => {
+                      return (
                         <button
-                          type="submit"
-                          class="btn btn-warning"
-                          onClick={() =>
-                            this.props.createWishlist({
-                              title: this.state.wishlist_name,
-                              genre: this.state.genre
-                            })
-                          }
+                          className="dropdown-item"
+                          type="button"
+                          key={i}
+                          value={i}
+                          onClick={this.updateListIdAndIndex(list.id)}
                         >
-                          Create
+                          {list.title}
                         </button>
-                      </form>
-                    </div>
+                      );
+                    })}
+
+                    <div class="dropdown-divider"></div>
+
+                    <form class="px-4 py-3">
+                      <div class="form-group">
+                        {/* <label for="wishlistInput">Email address</label> */}
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Create Wishlist"
+                          onChange={e =>
+                            this.setState({ wishlist_name: e.target.value })
+                          }
+                        ></input>
+                      </div>
+
+                      <div class="form-group">
+                        {/* <label for="wishlistInput">Email address</label> */}
+                        <input
+                          type="text"
+                          class="form-control"
+                          placeholder="Wishlist Genre"
+                          onChange={e =>
+                            this.setState({ genre: e.target.value })
+                          }
+                        ></input>
+                      </div>
+
+                      <button
+                        type="submit"
+                        class="btn btn-warning"
+                        onClick={() =>
+                          this.props.createWishlist({
+                            title: this.state.wishlist_name,
+                            genre: this.state.genre
+                          })
+                        }
+                      >
+                        Create
+                      </button>
+                    </form>
                   </div>
-                  <div className="search-buttons">
-                    {this.state.wishlist_index.length > 0 ? this.state.book_added ? 
-                    
-                                       ( <div class="alert alert-success book-added" role="alert" style={{ paddingLeft: "5px", width: "fitContent" }}>
-                      Book Added!
-                    </div> )
-:
-                    (
+                </div>
+                <div className="search-buttons">
+                  {this.state.wishlist_index.length > 0 ? (
+                    this.state.book_added ? (
+                      <Animated animationIn="lightSpeedIn" isVisible={true}>
+                        <div
+                          class="alert alert-success book-added"
+                          role="alert"
+                        >
+                          Book Added!
+                        </div>
+                      </Animated>
+                    ) : (
                       <button
                         className="create-book-btn"
                         onClick={this.handleSubmit}
                       >
                         Add to Wish List
                       </button>
-                    ) : (
-                      <button
-                        className="create-book-btn"
-                        onClick={() => this.setState({ warning: true })}
-                      >
-                        Add to Wish List
-                      </button>
-                    )}
+                    )
+                  ) : (
+                    <button
+                      className="create-book-btn"
+                      onClick={() => this.setState({ warning: true })}
+                    >
+                      Add to Wish List
+                    </button>
+                  )}
 
-                    {this.state.warning ? renderWarning() : null}
+                  {this.state.warning ? renderWarning() : null}
 
+                  {this.state.exchange_added ? (
+                    <Animated animationIn="lightSpeedIn" isVisible={true}>
+                      <div class="alert alert-success book-added" role="alert">
+                        Book Added!
+                      </div>
+                    </Animated>
+                  ) : (
                     <button
                       className="create-exchange-book-btn"
                       onClick={this.handleExchangeListSubmit}
                     >
                       Add to Exchange List
                     </button>
-                  </div>
+                  )}
                 </div>
               </div>
             </div>
+          </div>
 
-            <div className="book-search-description">
-              {/* <p>
+          <div className="book-search-description">
+            {/* <p>
               <button
                 class="btn btn-primary"
                 type="button"
@@ -294,40 +311,40 @@ class SearchedBookIndexItem extends React.Component {
             <div class="collapse" id="collapseExample">
               <div class="card card-body">{volumeInfo.description}</div>
             </div> */}
-              <div id="accordion">
-                <div className="card">
-                  <div className="card-header" id="headingOne">
-                    <h5 className="mb-0">
-                      <button
-                        className="btn btn-link"
-                        data-toggle="collapse"
-                        data-target={dataTarget}
-                        aria-expanded="true"
-                        aria-controls="collapseOne"
-                        style={{ color: "saddlebrown" }}
-                      >
-                        Description
-                      </button>
-                    </h5>
-                  </div>
+            <div id="accordion">
+              <div className="card">
+                <div className="card-header" id="headingOne">
+                  <h5 className="mb-0">
+                    <button
+                      className="btn btn-link"
+                      data-toggle="collapse"
+                      data-target={dataTarget}
+                      aria-expanded="true"
+                      aria-controls="collapseOne"
+                      style={{ color: "saddlebrown" }}
+                    >
+                      Description
+                    </button>
+                  </h5>
+                </div>
 
-                  <div
-                    id={"a" + this.props.book.id}
-                    className="collapse"
-                    aria-labelledby="headingOne"
-                    data-parent="#accordion"
-                  >
-                    {volumeInfo.description ? (
-                      <div className="card-body">{volumeInfo.description}</div>
-                    ) : (
-                      <div className="card-body">No description available</div>
-                    )}
-                  </div>
+                <div
+                  id={"a" + this.props.book.id}
+                  className="collapse"
+                  aria-labelledby="headingOne"
+                  data-parent="#accordion"
+                >
+                  {volumeInfo.description ? (
+                    <div className="card-body">{volumeInfo.description}</div>
+                  ) : (
+                    <div className="card-body">No description available</div>
+                  )}
                 </div>
               </div>
             </div>
-            {/* <p>{volumeInfo.description}</p> */}
           </div>
+          {/* <p>{volumeInfo.description}</p> */}
+        </div>
         {/* </Animated> */}
       </div>
     );

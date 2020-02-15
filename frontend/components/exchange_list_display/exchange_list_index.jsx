@@ -1,6 +1,7 @@
 import React from 'react';
 
 import ExchangeListIndexItem from './exchange_list_index_item'
+import { Animated } from "react-animated-css";
 
 class ExchangeListIndex extends React.Component {
   constructor(props) {
@@ -18,15 +19,17 @@ class ExchangeListIndex extends React.Component {
     console.log(this.props, "inside")
     return (
       <div>
-        <h3>Your Books to Exchange</h3>
-        <div className="exchange-list-index">
-          {exchangeLists.map(list => (
-            <ExchangeListIndexItem
-              list={list}
-              key={list.id}
-              className="exchange-list-container"
-            />
-          ))}
+        <div className="exchange-list-wrapper">
+          <h3 className="exchange-list-header">Books to Exchange</h3>
+          <div className="exchange-list-index">
+            {exchangeLists.map(list => (
+              <ExchangeListIndexItem
+                list={list}
+                key={list.id}
+                className="exchange-list-container"
+              />
+            ))}
+          </div>
         </div>
       </div>
     )

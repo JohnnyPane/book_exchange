@@ -1,6 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { Animated } from "react-animated-css";
 
 
 class WishlistIndexItem extends React.Component {
@@ -14,6 +15,7 @@ class WishlistIndexItem extends React.Component {
     // Object.keys(books).map(book => console.log(books[book]))
     return (
       <div className="wishlist-index-item">
+        {/* <Animated animationIn="slideInUp" isVisible={true}> */}
         <div className="wishlist-index-titles">
           <h3>{title}</h3>
           <h5>Genre: {genre ? genre : null}</h5>
@@ -29,6 +31,7 @@ class WishlistIndexItem extends React.Component {
               </li>
             )) : null }
         </ul>
+        {/* </Animated> */}
       </div>
     )
   }

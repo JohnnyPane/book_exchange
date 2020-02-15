@@ -1,6 +1,7 @@
 import React from 'react';
 
 import WishlistIndexItem from './wishlist_index_item';
+import { Animated } from "react-animated-css";
 
 class WishlistIndex extends React.Component {
   constructor(props) {
@@ -17,6 +18,7 @@ class WishlistIndex extends React.Component {
 
     return (
       <div>
+        <Animated animationIn="slideInUp" isVisible={true}>
         <div className="wishlist-index">
           {wishlists.map(list => (
             <WishlistIndexItem
@@ -26,6 +28,7 @@ class WishlistIndex extends React.Component {
             />
           ))}
           </div>
+        </Animated>
       </div>
     )
   }

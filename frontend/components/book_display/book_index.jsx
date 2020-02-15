@@ -25,13 +25,17 @@ class BookIndex extends React.Component {
       fetchWishlists,
       createWishlist,
       exchangeLists,
-      fetchExchangeLists
+      fetchExchangeLists,
+      nytBooks,
+      nytBestSellers,
     } = this.props;
    
     return (
       <div className="book-index">
         <div className="book-search">
           <BookSearch
+            nytBooks={nytBooks}
+            nytBestSellers={nytBestSellers}
             googleBooks={googleBooks}
             searchedBooks={searchedBooks}
             createBook={createBook}

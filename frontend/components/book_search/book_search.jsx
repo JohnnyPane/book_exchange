@@ -6,6 +6,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBook, faSearch } from "@fortawesome/free-solid-svg-icons";
 // import booksImage from "../../../app/assets/images/books_header.jpg"
 // import { Animated } from "react-animated-css";
+import NYTBestSellers from '../best_sellers/best_sellers'
 
 class BookSearch extends React.Component {
   constructor(props) {
@@ -38,7 +39,9 @@ class BookSearch extends React.Component {
       fetchWishlists,
       wishlists,
       exchangeLists,
-      createWishlist
+      createWishlist,
+      nytBooks,
+      nytBestSellers
     } = this.props;
 
     const createSearchList = () =>
@@ -66,6 +69,9 @@ class BookSearch extends React.Component {
             </p>
           </div>
         </div>
+
+        <NYTBestSellers nytBooks={nytBooks} nytBestSellers={nytBestSellers} />
+    
         <div className="search-box">
           <div className="search-bar">
             <div className="book-icon">

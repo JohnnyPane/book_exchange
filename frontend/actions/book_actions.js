@@ -1,9 +1,10 @@
 import * as APIUtil from '../util/book_api_util';
-import { bookSearch } from '../util/google_book_api_search';
+import { bookSearch, bestSellersList } from "../util/google_book_api_search";
 
 export const RECEIVE_BOOKS = 'RECEIVE_BOOKS';
 export const SEARCH_BOOKS = 'SEARCH_BOOKS';
 export const RECEIVE_BOOK = 'RECEIVE_BOOK';
+export const NYT_BEST_SELLERS = "NYT_BEST_SELLERS";
 
 export const receiveBooks = books => ({
   type: RECEIVE_BOOKS,
@@ -19,6 +20,11 @@ export const searchBooks = books => ({
   type: SEARCH_BOOKS,
   books
 });
+
+export const nytBestSellers = books => ({
+  type: NYT_BEST_SELLERS,
+  books
+})
 
 export const fetchBooks = () => dispatch => (
   APIUtil.fetchBooks().then(books => (
@@ -44,3 +50,8 @@ export const googleBooks = input => dispatch => (
   ))
 );
 
+export const nytBooks = input => dispatch => (
+  bestSellersList(input).then(books => (
+    dispatch(nytBestSellers(books))
+  ))
+);
