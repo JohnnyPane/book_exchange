@@ -10,3 +10,10 @@ export const fetchExchangeList = id =>
     method: "GET",
     url: `api/exchange_lists/${id}`
   });
+
+  export const createExchangeList = data =>
+  $.ajax({
+    method: "POST",
+    url: "/api/exchange_lists",
+    data: data
+  });

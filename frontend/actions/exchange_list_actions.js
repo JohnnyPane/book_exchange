@@ -9,17 +9,25 @@ export const receiveExchangeLists = lists => ({
 });
 
 export const receiveExchangeList = ({ exchangeList, books }) => ({
-         type: RECEIVE_EXCHANGE_LISTS,
-         exchangeList,
-         books
-       });
+  type: RECEIVE_EXCHANGE_LISTS,
+  exchangeList,
+  books
+});
 
-export const fetchExchangeLists = () => dispatch =>
-         APIUtil.fetchExchangeLists().then(lists =>
-           dispatch(receiveExchangeLists(lists))
-         );
+export const fetchExchangeLists = () => dispatch => (
+  APIUtil.fetchExchangeLists().then(lists => (
+    dispatch(receiveExchangeLists(lists))
+  ))
+);
 
-export const fetchExchangeList = id => dispatch =>
-         APIUtil.fetchExchangeList(id).then(list =>
-           dispatch(receiveExchangeList(list))
-         );
+export const fetchExchangeList = id => dispatch => ( 
+  APIUtil.fetchExchangeList(id).then(list => (
+    dispatch(receiveExchangeList(list))
+  ))
+);
+
+export const createExchangeList = list => dispatch => (
+  APIUtil.createExchangeList(list).then(list => (
+    dispatch(receiveExchangeList(list))
+  ))
+);

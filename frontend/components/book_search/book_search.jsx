@@ -41,7 +41,8 @@ class BookSearch extends React.Component {
       exchangeLists,
       createWishlist,
       nytBooks,
-      nytBestSellers
+      nytBestSellers,
+      googleBooks
     } = this.props;
 
     const createSearchList = () =>
@@ -60,7 +61,7 @@ class BookSearch extends React.Component {
     
     return (
       <div className="main-search-page">
-        <div className="jumbotron jumbotron-fluid splash-page-jumbo">
+        {/* <div className="jumbotron jumbotron-fluid splash-page-jumbo">
           <div className="container">
             <h1 className="display-4">Book Exchange</h1>
             <p className="lead">
@@ -68,9 +69,9 @@ class BookSearch extends React.Component {
               book club, make new friends, and explore the world of literature
             </p>
           </div>
-        </div>
+        </div> */}
 
-        <NYTBestSellers nytBooks={nytBooks} nytBestSellers={nytBestSellers} />
+        <NYTBestSellers nytBooks={nytBooks} nytBestSellers={nytBestSellers} googleBooks={googleBooks} />
     
         <div className="search-box">
           <div className="search-bar">

@@ -21,6 +21,7 @@
 
 body {
   font-family: 'Montserrat', sans-serif;
+  // background-color: rgba(255,255,223,0.3);
 }
 
 ul {
@@ -121,7 +122,7 @@ input.middle:focus {
   background: rgba(255, 255, 255, 0.9);
   height: max-content;
   box-shadow: 0 0 3px grey;
-  margin-top: 100px;
+  margin-top: 150px;
 }
 
 .login-form-box > a:hover {
@@ -129,6 +130,10 @@ input.middle:focus {
 }
 
 // SEARCH PAGE
+
+.main-search-page {
+  margin-top: 50px;
+}
 
 .searched-index-wrapper {
   width: 80%;
@@ -148,6 +153,7 @@ input.middle:focus {
   box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   padding: 5px;
+  background-color: white;
 }
 
 .search-book-title-items {
@@ -222,15 +228,13 @@ input.middle:focus {
 
 
 .splash-page-jumbo {
-  // margin-top: 85px;
-  height: 300px;
-  background-image: url(https://images.unsplash.com/photo-1550399105-c4db5fb85c18?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1051&q=80);
+  height: 350px;
+  background-image: url(https://images.unsplash.com/photo-1476275466078-4007374efbbe?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1014&q=80);
   color: white;
-  // background-position: 170px -165px;
   width: 100vw;
-  // background: black;
   overflow: hidden;
-  // background-position: center;
+  box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.5);
+  opacity: 0.9;
 }
 
 .splash-jumbo-image {
@@ -244,13 +248,14 @@ input.middle:focus {
 }
 
 .search-bar {
-    width: 35%;
+    width: 40%;
     border-radius: 20px;
     border: 1px solid rgba(0,0,0,0.225);
     padding: 5px;
     padding-left: 10px;
     display: flex;
     align-items: center;
+    background-color: white;
 }
 
 .search-icon {
@@ -266,6 +271,7 @@ input.middle:focus {
 .search-icon-button {
   padding-right: 7px;
   border: none;
+  background: none;
 }
 
 .search-icon-button:hover {
@@ -322,6 +328,7 @@ input.middle:focus {
     box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
     border-radius: 5px;
     padding: 7px;
+    background-color: white;
 }
 
 .wishlist-book-item {
@@ -353,6 +360,7 @@ input.middle:focus {
   align-items: center;
   border-radius: 5px;
   padding: 15px;
+  background-color: white;
 }
 
 .exchange-list-header {
@@ -371,6 +379,39 @@ input.middle:focus {
   float: left;
   width: 21%;
   margin-left: 30px;
+  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 10px;
+  background-color: white;
+}
+
+.nyt-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-bottom: 15px;
+  border-bottom: 1px solid lightgray;
+}
+
+.bestseller-title {
+  text-transform: capitalize;
+  // font-family: nyt-franklin,helvetica,arial,sans-serif;
+  border: 0;
+  padding: 5px;
+  text-align: inherit;
+}
+
+.bestseller-title:hover {
+  color: saddlebrown;
+}
+
+.nyt-books-list {
+  padding: 15px 0 0 10px;
+}
+
+#nyt-sellers-list {
+  width: fit-content;
 }
 
 

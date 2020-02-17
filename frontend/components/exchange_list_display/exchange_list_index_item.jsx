@@ -13,7 +13,7 @@ class ExchangeListIndexItem extends React.Component {
     return (
       <div className="exchange-index-item">
         <ul className="wish-book-index-list">
-          {Object.keys(books).map(book => (
+          {this.props.list.books ? Object.keys(books).map(book => (
             <li key={book} className="wishlist-book-item">
               <img src={books[book].imageURL} className="wish-index-book-img"></img>
               <div>
@@ -21,7 +21,7 @@ class ExchangeListIndexItem extends React.Component {
                 <h6>{books[book].authors}</h6>
               </div>
             </li>
-          ))}
+          )) : null }
         </ul>
       </div>
     )
