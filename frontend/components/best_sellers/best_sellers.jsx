@@ -10,7 +10,6 @@ class NYTBestSellers extends React.Component {
     }
     this.populateNYTlist = this.populateNYTlist.bind(this);
     this.searchGoogle = this.searchGoogle.bind(this);
-
   }
 
   componentDidMount() {
@@ -26,12 +25,22 @@ class NYTBestSellers extends React.Component {
     this.props.googleBooks(e.currentTarget.value);
   };
 
+  // setListState(e) {
+  //   e.preventDefault();
+  //   this.setState({
+  //     listType: e.currentTarget.value,
+  //     nytList: e.currentTarget.name
+  //   });
+  // }
+
   populateNYTlist(e) {
     e.preventDefault();
-    this.setState({listType: e.currentTarget.value})
-    this.setState({nytList: e.currentTarget.name})
-    this.props.nytBooks(this.state.listType)
-    console.log(this.state)
+    this.setState({
+      listType: e.currentTarget.value,
+      nytList: e.currentTarget.name
+    }, () => {
+      this.props.nytBooks(this.state.listType);
+    });
   }
 
   render() {

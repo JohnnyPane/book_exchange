@@ -71,9 +71,16 @@ class BookSearch extends React.Component {
           </div>
         </div> */}
 
-        <NYTBestSellers nytBooks={nytBooks} nytBestSellers={nytBestSellers} googleBooks={googleBooks} />
-    
+        <NYTBestSellers
+          nytBooks={nytBooks}
+          nytBestSellers={nytBestSellers}
+          googleBooks={googleBooks}
+        />
+
         <div className="search-box">
+          {/* <h1 style={{ margin: "0" }} className="logo-text">
+            Book Exchange
+          </h1> */}
           <div className="search-bar">
             <div className="book-icon">
               <FontAwesomeIcon icon={faBook} style={{ color: "saddlebrown" }} />

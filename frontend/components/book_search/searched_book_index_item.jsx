@@ -16,13 +16,27 @@ class SearchedBookIndexItem extends React.Component {
       genre: "",
       warning: false,
       book_added: false,
-      exchange_added: false
+      exchange_added: false,
+      book_title: this.props.book.volumeInfo.title
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleExchangeListSubmit = this.handleExchangeListSubmit.bind(this);
     this.update = this.update.bind(this);
     this.updateListIdAndIndex = this.updateListIdAndIndex.bind(this);
     this.updateWislistName = this.updateWislistName.bind(this);
+    this.createWishlistSubmit = this.createWishlistSubmit.bind(this);
+  }
+
+  componentDidUpdate() {
+    console.log(this.state.book_title, "TITLE")
+    if (this.state.book_title !== this.props.book.volumeInfo.title) {
+      this.setState({
+        warning: false,
+        book_added: false,
+        exchange_added: false,
+        book_title: this.props.book.volumeInfo.title
+      });
+    }
   }
 
   update(property) {
@@ -81,7 +95,13 @@ class SearchedBookIndexItem extends React.Component {
     this.setState({ book_added: true })
   }
 
-
+  createWishlistSubmit(e) {
+    e.preventDefault();
+    this.props.createWishlist({
+      title: this.state.wishlist_name,
+      genre: this.state.genre
+    });
+  }
 
   handleExchangeListSubmit(e) {
     e.preventDefault();
@@ -117,7 +137,7 @@ class SearchedBookIndexItem extends React.Component {
   }
 
   render() {
-    console.log(this.props, "search props")
+    // console.log(this.props, "search props")
     const { volumeInfo } = this.props.book;
     const { wishlists } = this.props;
 
@@ -129,7 +149,7 @@ class SearchedBookIndexItem extends React.Component {
 
     const renderWarning = () => (
       <Animated animationIn="slideInRight" animationOut="zoomOutLeft" isVisible={true}>
-      <div class="alert alert-warning" role="alert">
+      <div class="alert alert-warning" role="alert" style={{ fontSize: "12px", width: "fit-content", marginLeft: "5px"}}>
         Please Select a Wishlist
       </div>
       </Animated>
@@ -143,7 +163,7 @@ class SearchedBookIndexItem extends React.Component {
 
     const genres = ["Fantasy", "Sci-Fi", "Horror", "Western", "Romance", "Thriller", "Mystery", "Detective", "Dystopia", "Memoir", "Biography", "Play", "Musical", "Satire", "Poetry", "Young Adult", "Children's Lit"]
 
-    console.log(wishlists, "lists");
+    // console.log(wishlists, "lists");
 
     return (
       <div className="searched-index-wrapper">
@@ -234,12 +254,7 @@ class SearchedBookIndexItem extends React.Component {
                       <button
                         type="submit"
                         class="btn btn-warning"
-                        onClick={() =>
-                          this.props.createWishlist({
-                            title: this.state.wishlist_name,
-                            genre: this.state.genre
-                          })
-                        }
+                        onClick={this.createWishlistSubmit}
                       >
                         Create
                       </button>
