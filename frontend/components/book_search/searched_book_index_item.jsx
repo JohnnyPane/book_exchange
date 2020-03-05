@@ -31,6 +31,9 @@ class SearchedBookIndexItem extends React.Component {
     console.log(this.state.book_title, "TITLE")
     if (this.state.book_title !== this.props.book.volumeInfo.title) {
       this.setState({
+        wishlist_id: "",
+        button_title: "",
+        wishlist_index: "",
         warning: false,
         book_added: false,
         exchange_added: false,

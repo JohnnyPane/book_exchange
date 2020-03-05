@@ -50,12 +50,24 @@ class NYTBestSellers extends React.Component {
     return (
       <div className="nyt-bestsellers-wrapper">
         <div className="nyt-header">
-          <h5 style={{fontFamily: "cursive"}}>New York Times Best Sellers</h5>
+          <h5 style={{ fontFamily: "cursive" }}>New York Times Best Sellers</h5>
           <div className="btn-group dropright">
-            <button className="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style={{fontSize: "12px"}}>
+            <button
+              className="btn btn-secondary dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton"
+              data-toggle="dropdown"
+              aria-haspopup="true"
+              aria-expanded="false"
+              style={{ fontSize: "12px" }}
+            >
               {this.state.nytList}
             </button>
-            <div className="dropdown-menu nyt-sellers-list" id="nyt-sellers-list" aria-labelledby="dropdownMenuButton">
+            <div
+              className="dropdown-menu nyt-sellers-list"
+              id="nyt-sellers-list"
+              aria-labelledby="dropdownMenuButton"
+            >
               <button
                 className="dropdown-item"
                 type="button"
@@ -75,8 +87,7 @@ class NYTBestSellers extends React.Component {
                 onClick={this.populateNYTlist}
               >
                 Combined Print & E-Book Nonfiction
-
-              </button>            
+              </button>
               <button
                 className="dropdown-item"
                 type="button"
@@ -170,13 +181,25 @@ class NYTBestSellers extends React.Component {
             </div>
           </div>
         </div>
-        <ul className="nyt-books-list">
-        {results ? results.map((book, i) => (
-          <li className="bestseller-title"><button className="bestseller-title" value={book.isbns[0].isbn10} onClick={this.searchGoogle}>{i + 1}. {book.book_details[0].title.toLowerCase()}</button></li>
-        )) : null }
-        </ul>
+        <ol className="nyt-books-list">
+          {results
+            ? results.map((book, i) => (
+                <li className="bestseller-title" key={i}>
+                  <button
+                    className="bestseller-title"
+                    value={book.isbns[0].isbn10}
+                    onClick={this.searchGoogle}
+                  >
+                    {book.book_details[0].title.toLowerCase()}
+                    <br />
+                    <div style={{fontSize: "12px", textTransform: "none", textIndent: "10px"}}>by {book.book_details[0].author}</div>
+                  </button>
+                </li>
+              ))
+            : null}
+        </ol>
       </div>
-    )
+    );
   }
 
 }

@@ -74,12 +74,14 @@ input.middle:focus {
 .header-group {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .header-button {
   border-radius: 5px;
   color: saddlebrown;
   border: none;
+  margin-left: 20px;
 }
 
 .header-button:hover {
@@ -407,7 +409,7 @@ input.middle:focus {
 }
 
 .nyt-books-list {
-  padding: 15px 0 0 10px;
+  padding: 15px 0 0 25px;
 }
 
 #nyt-sellers-list {
