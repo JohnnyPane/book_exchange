@@ -77,31 +77,51 @@ class BookSearch extends React.Component {
           googleBooks={googleBooks}
         />
 
+
+
+
         <div className="search-box">
           {/* <h1 style={{ margin: "0" }} className="logo-text">
             Book Exchange
           </h1> */}
-          <div className="search-bar">
-            <div className="book-icon">
-              <FontAwesomeIcon icon={faBook} style={{ color: "saddlebrown" }} />
+          <h1 style={{ margin: "0" }} className="splash-logo">
+            Book Exchange
+          </h1>
+            <div className="search-bar-and-icon">
+              <div className="search-bar">
+                <div className="book-icon">
+                  <FontAwesomeIcon icon={faBook} style={{ color: "saddlebrown" }} />
+                </div>
+                <form onSubmit={this.searchGoogle} className="google-search-form">
+                  <input
+                    type="search"
+                    id="books-search"
+                    placeholder="Enter a book, author, or ISBN"
+                    onChange={this.update("searchInput")}
+                  />
+                </form>
+                <div className="search-icon">
+                  {/* <button onClick={this.searchGoogle} className="search-icon-button">
+                    Search
+                  </button> */}
+                  <FontAwesomeIcon
+                    icon={faSearch}
+                    style={{ color: "lightgray" }}
+                    className="magnify-icon"
+                  />
+                </div>
+              </div>
+              {/* <div className="search-icon">
+                <button onClick={this.searchGoogle} className="search-icon-button">
+                  Search
+                </button>
+                <FontAwesomeIcon
+                  icon={faSearch}
+                  style={{ color: "lightgray" }}
+                  className="magnify-icon"
+                />
+              </div> */}
             </div>
-            <input
-              type="search"
-              id="books-search"
-              placeholder="Enter a book or an author"
-              onChange={this.update("searchInput")}
-            />
-          </div>
-          <div className="search-icon">
-            <button onClick={this.searchGoogle} className="search-icon-button">
-              Search
-            </button>
-            <FontAwesomeIcon
-              icon={faSearch}
-              style={{ color: "lightgray" }}
-              className="magnify-icon"
-            />
-          </div>
         </div>
         <div className="searched-books">
           {searchedBooks.length > 0 ? createSearchList() : null}

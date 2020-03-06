@@ -138,7 +138,7 @@ input.middle:focus {
 }
 
 .searched-index-wrapper {
-  width: 80%;
+  width: 85%;
 }
 
 .searched-books{
@@ -244,13 +244,22 @@ input.middle:focus {
   opacity: 0.4;
 }
 
+.splash-logo {
+  margin: 0px;
+  font-size: 127px;
+  color: rgba(0,0,0,0.7);
+  font-family: 'Sacramento', cursive;
+}
+
 .search-box {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 .search-bar {
-    width: 40%;
+    width: 500px;
     border-radius: 20px;
     border: 1px solid rgba(0,0,0,0.225);
     padding: 5px;
@@ -260,9 +269,19 @@ input.middle:focus {
     background-color: white;
 }
 
+.search-bar-and-icon {
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.google-search-form {
+  width: 100%;
+}
+
 .search-icon {
   display: flex;
   align-items: center;
+  margin-right: 10px;
 }
 
 .search-icon:hover {
@@ -282,11 +301,12 @@ input.middle:focus {
 
 .book-icon {
   padding-left: 7px;
+  padding-top: 2px;
 }
 
 #books-search {
   border: none;
-  width: 100%;
+  width: 99%;
   -webkit-appearance: none;
   padding-left: 10px;
 }
@@ -346,6 +366,7 @@ input.middle:focus {
 
 .wish-index-book-img {
   height: 66px;
+  width: 44px;
   border-radius: 3px;
 }
 

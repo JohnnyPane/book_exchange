@@ -192,7 +192,7 @@ class NYTBestSellers extends React.Component {
                   >
                     {book.book_details[0].title.toLowerCase()}
                     <br />
-                    <div style={{fontSize: "12px", textTransform: "none", textIndent: "10px"}}>by {book.book_details[0].author}</div>
+                    <div style={{fontSize: "12px", textTransform: "none", marginLeft: "10px"}}>by {book.book_details[0].author}</div>
                   </button>
                 </li>
               ))

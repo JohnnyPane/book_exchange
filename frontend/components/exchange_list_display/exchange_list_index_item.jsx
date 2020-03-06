@@ -18,7 +18,7 @@ class ExchangeListIndexItem extends React.Component {
               <img src={books[book].imageURL} className="wish-index-book-img"></img>
               <div>
                 <h6>{books[book].title}</h6>
-                <h6>{books[book].authors}</h6>
+                <h6 style={{ fontSize: "14px" }}>by {books[book].authors}</h6>
               </div>
             </li>
           )) : null }
