@@ -7,7 +7,8 @@ import configureStore from './store/store';
 import { fetchBooks } from './util/book_api_util';
 import { fetchWishlists, fetchWishlist } from './actions/wishlist_actions'
 import { bookSearch } from './util/google_book_api_search';
-import { createBook } from './util/book_api_util'
+import { createBook } from './util/book_api_util';
+import { fetchMatchList } from './actions/match_list_actions';
 
 document.addEventListener("DOMContentLoaded", () => {
   let store;
@@ -23,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     store = configureStore();
   }
+  window.fetchMatchList = fetchMatchList;
   window.bookSearch = bookSearch;
   window.fetchBooks = fetchBooks;
   window.fetchWishlists = fetchWishlists

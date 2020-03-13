@@ -5,6 +5,7 @@ import searchedBooksReducer from './searched_books_reducer';
 import wishlistsReducer from './wishlists_reducer';
 import exchangeListsReducer from './exhange_lists_reducer';
 import bestSellersReducer from './best_sellers_reducer'
+import matchListsReducer from './match_lists_reducers'
 
 const entitiesReducer = combineReducers({
 	users: usersReducer,
@@ -12,6 +13,7 @@ const entitiesReducer = combineReducers({
 	searchedBooks: searchedBooksReducer,
 	wishlists: wishlistsReducer,
 	exchangeLists: exchangeListsReducer,
+	matchLists: matchListsReducer,
 	nytBestSellers: bestSellersReducer
 });
 

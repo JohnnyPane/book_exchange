@@ -2,7 +2,8 @@ class Api::MatchListsController < ApplicationController
 	before_action :require_logged_in
 
 	def index
-    @matchList = Book.add_book_info_to_sorted_lists(current_user.id)
+		matchList = Book.add_book_info_to_sorted_lists(current_user.id)
+		@matchList = matchList.slice(0, 10)
     render :index
 	end
 

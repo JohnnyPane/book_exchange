@@ -7,7 +7,8 @@ import LoginFormContainer from './session_form/login_form_container';
 import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import BookIndexContainer from './book_display/book_index_container';
 import WishlistIndexContainer from './wishlist_display/wishlist_index_container';
-import ExchangeListIndexContainer from './exchange_list_display/exchange_list_index_container'
+import ExchangeListIndexContainer from './exchange_list_display/exchange_list_index_container';
+import MatchListIndexContainer from './match_lists/match_list_index_container';
 
 
 const App = () => (
@@ -40,6 +41,11 @@ const App = () => (
       exact
       path="/wishlists"
       component={WishlistIndexContainer}
+    />
+    <ProtectedRoute
+      exact
+      path="/match_lists"
+      component={MatchListIndexContainer}
     />
     {/* <Route path="/wishlists/:wishlistId" component={WishlistShowContainer} /> */}
   </div>
