@@ -19,95 +19,83 @@ class Book < ApplicationRecord
     class_name: :User
     # optional: true
 
-  # def self.books_by_wishlist_author
-  #   Book.all.where.not(wishlist_id: nil).where.not(author_id: current_user).group_by(&:author_id)
-  # end
-
-  # def current_user_wishlist
-  #   Book.all.where.not(wishlist_id: nil).where(author_id: current_user)
-  # end
-
-  # def books_by_exchange_list_author
-  #   Book.all.where.not(exchange_list_id: nil).where.not(author_id: current_user).group_by(&:author_id)
-  # end
-
-  # def current_user_exchange_list
-  #   Book.all.where.not(wishlist_id: nil).where(author_id: current_user)
-  # end
-
   def self.user_key
     all.group_by(&:user).map do |user, books|
       {
         user: user.username,
         titles: books.map { |book| book.title},
-
+        author_id: user.id
       }
     end
   end
 
-  # def book_usernames
-  #   Book.all.map do |book|
-  #     book.user.username 
-  #   end
-  # end
-
-  def self.user_exchange_to_others_wish
-    current_user_exchange_list = Book.all.where.not(exchange_list_id: nil).where(author_id: 5).user_key
-    books_by_wishlist_author = Book.all.where.not(wishlist_id: nil).where.not(author_id: 5).user_key
+  def self.user_exchange_to_others_wish(current_user)
+    current_user_exchange_list = Book.all.where.not(exchange_list_id: nil).where(author_id: current_user).user_key
+    books_by_wishlist_author = Book.all.where.not(wishlist_id: nil).where.not(author_id: current_user).user_key
     user_exchange_books = current_user_exchange_list[0][:titles] 
     books_by_wishlist_author.map do |lists|
       matches = lists[:titles] & user_exchange_books
         {
           lists[:user] => {
-            :wishes => matches
+            :wishes => matches,
+            :author_id => lists[:author_id]
           }
         }
     end
   end
 
-  def self.sorted_user_exchange_to_others_wish
-    Book.user_exchange_to_others_wish.sort_by { |hsh| hsh.keys.first }
-  end
-
-  def self.user_wishlists_to_others_exchange
-    current_user_wishlist = Book.all.where.not(wishlist_id: nil).where(author_id: 5).user_key
-    books_by_exchange_list_author = Book.all.where.not(exchange_list_id: nil).where.not(author_id: 5).user_key
+  def self.user_wishlists_to_others_exchange(current_user)
+    current_user_wishlist = Book.all.where.not(wishlist_id: nil).where(author_id: current_user).user_key
+    books_by_exchange_list_author = Book.all.where.not(exchange_list_id: nil).where.not(author_id: current_user).user_key
     user_wishlist_books = current_user_wishlist[0][:titles] 
     books_by_exchange_list_author.map do |lists|
       matches = lists[:titles] & user_wishlist_books
         {
           lists[:user] => {
-            :exchanges => matches
+            :exchanges => matches,
+            :author_id => lists[:author_id]
           }
         }
     end
   end
 
-  def self.sorted_user_wish_to_others_exchange
-    Book.exchange_list_wishlist_merge.sort_by { |hsh| hsh.keys.first }
-  end
-
-  # def self.exchange_list_to_wishlist_diff
-  #   others_exchange_books = (Book.sorted_user_wish_to_others_exchange - Book.sorted_user_exchange_to_others_wish)
-  #   others_wishlist_books = (Book.sorted_user_exchange_to_others_wish - Book.sorted_user_wish_to_others_exchange)
-  #   {
-  #     :exchange_books => others_exchange_books,
-  #     :others_wishlist_books => others_wishlist_books
-  #   }
-  # end
-
-  def self.exchange_list_wishlist_merge
-    others_exchange_books = Book.user_wishlists_to_others_exchange
-    others_wishlist_books = Book.user_exchange_to_others_wish
-    # others_exchange_books.map do |exchange_list|
-    #   others_wishlist_books.map do |wishlist|
-    #     exchange_list.merge(wishlist)
-    #   end
-    # end
-    combined_wish_and_exchange = others_exchange_books + others_wishlist_books
+  def self.exchange_list_wishlist_merge(current_user)
+    # others_exchange_books = user_wishlists_to_others_exchange
+    # others_wishlist_books = user_exchange_to_others_wish
+    combined_wish_and_exchange = user_wishlists_to_others_exchange(current_user) + user_exchange_to_others_wish(current_user)
     combined_wish_and_exchange.flat_map(&:entries)
       .group_by(&:first)
       .map{|k,v| Hash[k, v.map(&:last)]}
   end
-end
 
+  def self.sorted_user_wish_to_others_exchange(current_user)
+    exchange_list_wishlist_merge(current_user).sort_by { |hsh| hsh.keys.first }
+  end
+
+  def self.exchange_and_wishlists_to_single_obj(current_user)
+    sorted_user_wish_to_others_exchange(current_user).map do |hsh|
+      lists = hsh[hsh.keys.first]
+      {
+       hsh.keys.first => lists.reduce({}, :merge)
+      }
+    end
+  end
+
+  def self.add_book_info_to_sorted_lists(current_user)
+    exchange_and_wishlists_to_single_obj(current_user).flat_map do |lists_by_user|
+      lists_by_user.flat_map do |user, lists|
+           {
+             user =>
+              {
+              exchange_books: lists[:exchanges].flat_map do |book|
+                Book.where(author_id: lists[:author_id]).where(title: book).where.not(exchange_list_id: nil)
+              end,
+              wishlist_books: lists[:wishes].flat_map do |book|
+                 Book.where(author_id: lists[:author_id]).where(title: book).where.not(wishlist_id: nil)
+              end
+              }
+           }
+      end
+    end
+  end
+end

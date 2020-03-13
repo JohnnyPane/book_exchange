@@ -16,7 +16,7 @@ const Welcome = ({ currentUser, logout }) => {
       </h2> */}
 
       <div className="btn-group">
-        <button type="button" className="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <button style={{boxShadow: "0 1px 25px rgba(0, 0,0, 0.8)"}}type="button" className="btn btn-danger dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Hi, {currentUser.username}!
         </button>
         <div className="dropdown-menu">

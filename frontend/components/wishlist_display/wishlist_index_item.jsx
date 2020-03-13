@@ -18,7 +18,7 @@ class WishlistIndexItem extends React.Component {
         {/* <Animated animationIn="slideInUp" isVisible={true}> */}
         <div className="wishlist-index-titles">
           <h3>{title}</h3>
-          <h5>Genre: {genre ? genre : null}</h5>
+          <h5>Genre: {genre ? genre : "none"}</h5>
         </div>
         <ul className="wish-book-index-list">
           {this.props.list.books ? Object.keys(books).map(book => (

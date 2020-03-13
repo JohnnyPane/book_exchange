@@ -13,7 +13,7 @@ import ExchangeListIndexContainer from './exchange_list_display/exchange_list_in
 const App = () => (
   <div>
     <header>
-      <nav className="header-nav nav">
+      <nav className="header-nav nav header-logo">
         <Link to="/" className="logo-link">
           <div className="logo">
             <img

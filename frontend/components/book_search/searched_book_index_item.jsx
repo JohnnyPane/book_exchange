@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBook, faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faBook, faLeaf } from "@fortawesome/free-solid-svg-icons";
 import { Animated } from "react-animated-css";
 import { withRouter } from "react-router-dom";
 
@@ -152,7 +152,7 @@ class SearchedBookIndexItem extends React.Component {
 
     const renderWarning = () => (
       <Animated animationIn="slideInRight" animationOut="zoomOutLeft" isVisible={true}>
-      <div class="alert alert-warning" role="alert" style={{ fontSize: "12px", width: "fit-content", marginLeft: "5px"}}>
+      <div className="alert alert-warning" role="alert" style={{ fontSize: "12px", width: "fit-content", marginLeft: "5px"}}>
         Please Select a Wishlist
       </div>
       </Animated>
@@ -191,11 +191,11 @@ class SearchedBookIndexItem extends React.Component {
               <div className="book-search-titles">
                 <div className="search-title-author">
                   <h5>{volumeInfo.title}</h5>
-                  <h6>{volumeInfo.authors}</h6>
+                  <h6>{volumeInfo.authors.join(", ")}</h6>
                 </div>
                 <div className="btn-group dropright wishlist-dropdown">
                   <button
-                    className="btn btn-info dropdown-toggle wishlist-dropdown"
+                    className="btn btn-success dropdown-toggle wishlist-dropdown"
                     type="button"
                     id="dropdownMenu2"
                     data-toggle="dropdown"
@@ -203,6 +203,7 @@ class SearchedBookIndexItem extends React.Component {
                     aria-expanded="false"
                     value={this.state.button_title}
                     onClick={this.update("button_title")}
+                    style={{backgroundColor: "green", borderColor: "green"}}
                   >
                     {this.state.wishlist_index.length < 1
                       ? "Choose a Wishlist"
@@ -227,14 +228,14 @@ class SearchedBookIndexItem extends React.Component {
                       );
                     })}
 
-                    <div class="dropdown-divider"></div>
+                    <div className="dropdown-divider"></div>
 
-                    <form class="px-4 py-3">
-                      <div class="form-group">
+                    <form className="px-4 py-3">
+                      <div className="form-group">
                         {/* <label for="wishlistInput">Email address</label> */}
                         <input
                           type="text"
-                          class="form-control"
+                          className="form-control"
                           placeholder="Create Wishlist"
                           onChange={e =>
                             this.setState({ wishlist_name: e.target.value })
@@ -242,11 +243,11 @@ class SearchedBookIndexItem extends React.Component {
                         ></input>
                       </div>
 
-                      <div class="form-group">
+                      <div className="form-group">
                         {/* <label for="wishlistInput">Email address</label> */}
                         <input
                           type="text"
-                          class="form-control"
+                          className="form-control"
                           placeholder="Wishlist Genre"
                           onChange={e =>
                             this.setState({ genre: e.target.value })
@@ -256,7 +257,7 @@ class SearchedBookIndexItem extends React.Component {
 
                       <button
                         type="submit"
-                        class="btn btn-warning"
+                        className="btn btn-warning"
                         onClick={this.createWishlistSubmit}
                       >
                         Create
@@ -269,7 +270,7 @@ class SearchedBookIndexItem extends React.Component {
                     this.state.book_added ? (
                       <Animated animationIn="lightSpeedIn" isVisible={true}>
                         <div
-                          class="alert alert-success book-added"
+                          className="alert alert-success book-added"
                           role="alert"
                         >
                           Book Added!
@@ -296,7 +297,7 @@ class SearchedBookIndexItem extends React.Component {
 
                   {this.state.exchange_added ? (
                     <Animated animationIn="lightSpeedIn" isVisible={true}>
-                      <div class="alert alert-success book-added" role="alert">
+                      <div className="alert alert-success book-added" role="alert">
                         Book Added!
                       </div>
                     </Animated>
@@ -316,7 +317,7 @@ class SearchedBookIndexItem extends React.Component {
           <div className="book-search-description">
             {/* <p>
               <button
-                class="btn btn-primary"
+                className="btn btn-primary"
                 type="button"
                 data-toggle="collapse"
                 data-target="#collapseExample"
@@ -326,8 +327,8 @@ class SearchedBookIndexItem extends React.Component {
                 Description
               </button>
             </p>
-            <div class="collapse" id="collapseExample">
-              <div class="card card-body">{volumeInfo.description}</div>
+            <div className="collapse" id="collapseExample">
+              <div className="card card-body">{volumeInfo.description}</div>
             </div> */}
             <div id="accordion">
               <div className="card">
@@ -341,7 +342,7 @@ class SearchedBookIndexItem extends React.Component {
                       aria-controls="collapseOne"
                       style={{ color: "saddlebrown" }}
                     >
-                      Description
+                      Description<FontAwesomeIcon icon={faLeaf} style={{ color: "green", marginLeft: "4px", marginBottom: "1px" }} />
                     </button>
                   </h5>
                 </div>

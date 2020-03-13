@@ -90,7 +90,7 @@ class BookSearch extends React.Component {
             <div className="search-bar-and-icon">
               <div className="search-bar">
                 <div className="book-icon">
-                  <FontAwesomeIcon icon={faBook} style={{ color: "saddlebrown" }} />
+                <FontAwesomeIcon icon={faBook} style={{ color: "rgba(139, 69, 19, 0.85)" }} />
                 </div>
                 <form onSubmit={this.searchGoogle} className="google-search-form">
                   <input
