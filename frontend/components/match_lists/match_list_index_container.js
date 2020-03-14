@@ -4,7 +4,7 @@ import MatchListIndex from "./match_list_index";
 import { fetchMatchList } from "../../actions/match_list_actions";
 
 const mapStateToProps = state => ({
-  exchangeLists: state.entities.matchLists
+  matchList: state.entities.matchLists
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -23,6 +23,7 @@ const Welcome = ({ currentUser, logout }) => {
           <a className="dropdown-item" href="/#">Home</a>
           <a className="dropdown-item" href="/#/wishlists">Wishlists</a>
           <a className="dropdown-item" href="/#/exchange_lists">Exchange List</a>
+          <a className="dropdown-item" href="/#/match_lists">Match Lists</a>
           <div className="dropdown-divider"></div>
           <a className="dropdown-item" href="#">Separated link</a>
         </div>

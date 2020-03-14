@@ -426,9 +426,148 @@ input.middle:focus {
 .exchange-list-header {
   justify-content: center;
   display: flex;
-  border-bottom: 1px solid lightgray;
-  padding-bottom: 7px;
-  margin-bottom: 15px;
+  // border-bottom: 1px solid lightgray;
+  // padding-bottom: 15px;
+  // margin-bottom: 20px;
+}
+
+// MATCH LISTS
+
+.wrapper-of-matches {
+  display: flex; 
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+
+.match-lists-header{
+  display: flex;
+  margin-top: 15px;
+  font-family: "Sacramento";
+  justify-content: center;
+  font-size: 7em;
+}
+
+.user-match-header {
+  // border-bottom: 1px solid lightgray;
+  margin-bottom: 5px;
+  padding-bottom: 5px;
+  width: 90%;
+  text-align: center;
+}
+
+.match-exchange-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 5px;
+}
+
+.match-wish-header {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 5px;
+}
+
+// .match-titles-authors-ex-header{
+//   white-space: nowrap;
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+//   width: 100%;
+// }
+
+// .match-titles-authors-header{
+//   white-space: nowrap;
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+//   width: 100%;
+// }
+
+// .match-titles-authors {
+//   white-space: nowrap;
+//   overflow: hidden;
+//   text-overflow: ellipsis;
+//   width: 100%;
+// }
+
+.match-book-exchange-list {
+  // margin-right: 5px;
+  width: 100%;
+}
+
+.match-book-wish-list {
+  // margin-left: 5px;
+  width: 100%;
+}
+
+.match-list-index-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 20%;
+  padding: 15px;
+  float: left;
+  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  margin-top: 15px;
+  height: fit-content;
+  background-image: url(https://image.freepik.com/free-vector/floral-background-with-soft-colors_23-2148345105.jpg);
+  background-color: rgba(255,255,255,0.8);
+  background-blend-mode: luminosity;
+}
+
+.match-list-header-wrapper {
+  display: flex;
+  align-self: center;
+}
+
+.match-books-wrapper {
+  // display: flex;
+  // align-items: center;
+}
+
+.match-arrows {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 20px;
+  position: relative;
+  top: -10px;
+}
+
+.match-ul-books {
+  display: flex;
+  width: 100%;
+  align-items: center;
+}
+
+.match-exchange-books-wrapper {
+  justify-content: flex-end;
+  display: flex;
+  margin-right: 5px;
+  margin-bottom: 3px;
+}
+
+.match-wish-books-wrapper {
+  justify-content: flex-start;
+  display: flex;
+  margin-bottom: 3px;
+  margin-left: 5px;
+}
+
+.match-list-book-item {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.match-wish-title-authors {
+  margin-left: 5px;
+}
+
+.match-exchange-title-authors {
+  margin-right: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
 
 // BESTSELLERS LISTS

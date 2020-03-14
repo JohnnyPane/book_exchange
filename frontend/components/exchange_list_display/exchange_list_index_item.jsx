@@ -1,5 +1,4 @@
 import React from 'react';
-import ExchangeListIndex from './exchange_list_index';
 
 class ExchangeListIndexItem extends React.Component {
   constructor(props) {

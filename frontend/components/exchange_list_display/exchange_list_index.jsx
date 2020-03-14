@@ -20,7 +20,9 @@ class ExchangeListIndex extends React.Component {
     return (
       <div>
         <div className="exchange-list-wrapper">
-          <h3 className="exchange-list-header">Books to Exchange</h3>
+          <h3 className="exchange-list-header">Exchange Books</h3>
+
+          <hr style={{width: "80%", marginBottom: "1.5em"}} />
           <div className="exchange-list-index">
             {exchangeLists.map(list => (
               <ExchangeListIndexItem
