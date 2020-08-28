@@ -15,7 +15,6 @@ class WishlistIndex extends React.Component {
 
   componentDidMount() {
     this.props.fetchWishlists();
-    console.log(this.props)
   }
 
   render() {

@@ -28,7 +28,6 @@ class SearchedBookIndexItem extends React.Component {
   }
 
   componentDidUpdate() {
-    console.log(this.state.book_title, "TITLE")
     if (this.state.book_title !== this.props.book.volumeInfo.title) {
       this.setState({
         wishlist_id: "",
@@ -88,9 +87,8 @@ class SearchedBookIndexItem extends React.Component {
       description: descript,
       wishlist_id: this.state.wishlist_id
     };
-    console.log(this.state.wishlist_index.length)
+   
     if (this.state.wishlist_index.length > 0) {
-      console.log(newBook);
       this.props.createBook(newBook);
     } else {
       alert("please select a wishlist to add the book to");
@@ -140,7 +138,6 @@ class SearchedBookIndexItem extends React.Component {
   }
 
   render() {
-    // console.log(this.props, "search props")
     const { volumeInfo } = this.props.book;
     const { wishlists } = this.props;
 
@@ -165,8 +162,6 @@ class SearchedBookIndexItem extends React.Component {
     };
 
     const genres = ["Fantasy", "Sci-Fi", "Horror", "Western", "Romance", "Thriller", "Mystery", "Detective", "Dystopia", "Memoir", "Biography", "Play", "Musical", "Satire", "Poetry", "Young Adult", "Children's Lit"]
-
-    // console.log(wishlists, "lists");
 
     return (
       <div className="searched-index-wrapper">

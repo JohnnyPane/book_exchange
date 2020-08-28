@@ -14,10 +14,8 @@ class MatchListIndexItem extends React.Component {
   }
 
   render() {
-    console.log(this.props, "Match list index item")
     const { list } = this.props
     const userName = Object.keys(list)
-    // Object.keys(books).map(book => console.log(books[book]))
     return (
       <div className="match-list-index-item">
         <h5 className="user-match-header">{userName}</h5>

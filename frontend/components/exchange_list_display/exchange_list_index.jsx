@@ -10,13 +10,11 @@ class ExchangeListIndex extends React.Component {
 
   componentDidMount() {
     this.props.fetchExchangeLists();
-    console.log(this.props, "props")
   }
 
   render() {
     const { exchangeLists } = this.props;
 
-    console.log(this.props, "inside")
     return (
       <div>
         <div className="exchange-list-wrapper">

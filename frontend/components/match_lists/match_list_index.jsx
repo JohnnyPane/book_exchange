@@ -14,15 +14,6 @@ class MatchListIndex extends React.Component {
 
   render() {
     const { matchList, fetchMatchList } = this.props
-    console.log(this.props, "match lists")
-    // if (matchList.length > 0) {
-    //     matchList.map((user) => {
-    //     console.log(user, "lengthhhh")
-    //   })
-    // }
-
-    // const mapped = matchList.map(list => list)
-    // console.log(mapped, "listy")
 
     return (
       <div className="match-list-index">

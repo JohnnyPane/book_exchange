@@ -7,8 +7,7 @@ class ExchangeListIndexItem extends React.Component {
 
   render() {
     const { books } = this.props.list;
-    console.log(this.props)
-    // Object.keys(books).map(book => console.log(books[book]))
+
     return (
       <div className="exchange-index-item">
         <ul className="wish-book-index-list">

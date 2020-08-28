@@ -11,8 +11,7 @@ class WishlistIndexItem extends React.Component {
 
   render() {
     const { title, genre, books } = this.props.list;
-    console.log(this.props)
-    // Object.keys(books).map(book => console.log(books[book]))
+
     return (
       <div className="wishlist-index-item">
         {/* <Animated animationIn="slideInUp" isVisible={true}> */}

@@ -40,8 +40,6 @@ class BookIndex extends React.Component {
       nytBestSellers,
     } = this.props;
 
-    console.log(this.props.exchangeLists.length, this.state.loaded)
-
     const showModal = () => {
       if (this.props.exchangeLists.length === 0) {
         $("#staticBackdrop").modal("show");

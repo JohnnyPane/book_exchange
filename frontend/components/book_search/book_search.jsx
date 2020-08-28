@@ -17,10 +17,6 @@ class BookSearch extends React.Component {
     this.searchGoogle = this.searchGoogle.bind(this);
   }
 
-  componentDidUpdate() {
-    console.log(this.props);
-  }
-
   update(property) {
     return e => this.setState({ [property]: e.currentTarget.value });
   }
