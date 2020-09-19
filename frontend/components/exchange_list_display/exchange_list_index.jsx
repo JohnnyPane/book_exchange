@@ -16,7 +16,7 @@ class ExchangeListIndex extends React.Component {
     const { exchangeLists } = this.props;
 
     return (
-      <div>
+      <div className="center-exchange-list">
         <div className="exchange-list-wrapper">
           <h3 className="exchange-list-header">Exchange Books</h3>
 

@@ -217,11 +217,11 @@ input.middle:focus {
   margin-left: 5px;
   border-radius: 5px;
   border: none;
+  background: none;
 }
 
 .create-book-btn:hover {
-  background-color: rgba(139, 69, 19, 0.96);
-  color: white;
+  color: green;
 }
 
 .create-exchange-book-btn {
@@ -229,12 +229,12 @@ input.middle:focus {
   margin-left: 5px;
   border-radius: 5px;
   border: none;
+  background: none;
 }
 
 .create-exchange-book-btn:hover {
   // background-color: rgba(0, 128, 0, 0.85);
-  background-color: rgba(250,10,10,1);
-  color: white;
+  color: rgba(139, 69, 19, 0.96);
 }
 
 .book-search-description {
@@ -408,6 +408,11 @@ input.middle:focus {
 }
 
 // EXCHANGE LISTS
+
+.center-exchange-list {
+  display: flex;
+  justify-content: center;
+}
 
 .exchange-list-index > h1 {
   padding-top: 150px;
