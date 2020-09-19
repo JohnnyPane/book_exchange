@@ -62,7 +62,7 @@ class BookIndex extends React.Component {
               <div className="modal-content">
                 <div className="modal-header">
                   <h5 className="modal-title" id="staticBackdropLabel">
-                    Modal title
+                    Welcome to Book Exchange!
                   </h5>
                   {/* <button
                     type="button"
@@ -73,7 +73,7 @@ class BookIndex extends React.Component {
                     <span aria-hidden="true">&times;</span>
                   </button> */}
                 </div>
-                <div className="modal-body">Put in text about how the app works</div>
+                <div className="modal-body">Get started by adding books to your exchange or wish lists. Explore your matches and exchange books with other readers.</div>
                 <div className="modal-footer">
                   {/* <button
                     type="button"
@@ -90,7 +90,7 @@ class BookIndex extends React.Component {
                       this.handleExchangeListSubmit(userId)
                     }
                   >
-                    Let's Get Started!
+                    Let's Get Started
                   </button>
                 </div>
               </div>
