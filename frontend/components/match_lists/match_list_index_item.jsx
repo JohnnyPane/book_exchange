@@ -42,14 +42,14 @@ class MatchListIndexItem extends React.Component {
             ))}
           </ul>
           <div className="match-arrows">
-            <i class="fas fa-angle-double-right"></i>
+            <i className="fas fa-angle-double-right"></i>
             <FontAwesomeIcon icon={faShare} className="match-right-arrow" size="3x" style={{
-              color: "rgba(0, 120, 0, 0.8)", 
+              color: "rgb(213, 144, 102)", 
               position: "relative",
               left: "10px",
               top: "5px" }} />
             <FontAwesomeIcon icon={faShare} className="fa-rotate-180 match-left-arrow" size="3x" style={{
-              color: "rgba(139, 69, 19, 0.85)", 
+              color: "#230903", 
               position: "relative",
               right: "10px",
               bottom: "5px" }} />

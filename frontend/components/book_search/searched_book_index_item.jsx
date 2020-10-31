@@ -144,12 +144,12 @@ class SearchedBookIndexItem extends React.Component {
     const dataTarget = "#a" + this.props.book.id
 
     const renderImage = () => (
-      <img className="search-book-image" src={volumeInfo.imageLinks.smallThumbnail} style={{borderRadius: "5px"}}></img>
+      <img className="search-book-image" src={volumeInfo.imageLinks.smallThumbnail}></img>
     );
 
     const renderWarning = () => (
       <Animated animationIn="slideInRight" animationOut="zoomOutLeft" isVisible={true}>
-      <div className="alert alert-warning" role="alert" style={{ fontSize: "12px", width: "fit-content", marginLeft: "5px"}}>
+      <div className="alert alert-warning" role="alert" style={{ fontSize: "12px", width: "fit-content", marginLeft: "3px", marginBottom: "0.5rem"}}>
         Please Select a Wishlist
       </div>
       </Animated>
@@ -190,7 +190,7 @@ class SearchedBookIndexItem extends React.Component {
                 </div>
                 <div className="btn-group dropright wishlist-dropdown">
                   <button
-                    className="btn btn-success dropdown-toggle wishlist-dropdown"
+                    className="btn dropdown-toggle wishlist-dropdown"
                     type="button"
                     id="dropdownMenu2"
                     data-toggle="dropdown"
@@ -198,7 +198,7 @@ class SearchedBookIndexItem extends React.Component {
                     aria-expanded="false"
                     value={this.state.button_title}
                     onClick={this.update("button_title")}
-                    style={{backgroundColor: "green", borderColor: "green"}}
+                    style={{boxShadow: "0.5px 0.5px 3px grey"}}
                   >
                     {this.state.wishlist_index.length < 1
                       ? "Choose a Wishlist"
@@ -252,8 +252,9 @@ class SearchedBookIndexItem extends React.Component {
 
                       <button
                         type="submit"
-                        className="btn btn-warning"
+                        className="btn btn-success"
                         onClick={this.createWishlistSubmit}
+                        style={{backgroundColor: "rgb(106, 154, 105)", borderColor: "rgb(106, 154, 105)"}}
                       >
                         Create
                       </button>
@@ -276,7 +277,7 @@ class SearchedBookIndexItem extends React.Component {
                         className="create-book-btn"
                         onClick={this.handleSubmit}
                       >
-                        Add to Wish List
+                        Wish List
                       </button>
                     )
                   ) : (
@@ -284,7 +285,7 @@ class SearchedBookIndexItem extends React.Component {
                       className="create-book-btn"
                       onClick={() => this.setState({ warning: true })}
                     >
-                      Add to Wish List
+                      Wish List
                     </button>
                   )}
 
@@ -301,7 +302,7 @@ class SearchedBookIndexItem extends React.Component {
                       className="create-exchange-book-btn"
                       onClick={this.handleExchangeListSubmit}
                     >
-                      Add to Exchange List
+                      Exchange List
                     </button>
                   )}
                 </div>
@@ -327,7 +328,7 @@ class SearchedBookIndexItem extends React.Component {
             </div> */}
             <div id="accordion">
               <div className="card">
-                <div className="card-header" id="headingOne">
+                <div className="card-header" id="headingOne" style={{backgroundColor: "rgba(0, 0, 0, 0)", backgroundImage: "url(https://image.freepik.com/free-vector/collection-tropical-leaves_1324-119.jpg)", backgroundPositionX: "100px", backgroundPositionY: "-30px"}}>
                   <h5 className="mb-0">
                     <button
                       className="btn btn-link"
