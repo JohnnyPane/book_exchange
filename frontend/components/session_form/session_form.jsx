@@ -1,4 +1,5 @@
 import React from 'react';
+import { Animated } from "react-animated-css";
 
 
 class SessionForm extends React.Component {
@@ -6,7 +7,10 @@ class SessionForm extends React.Component {
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      email: '',
+      warning: false,
+      warningValue: ''
     };
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -19,8 +23,16 @@ class SessionForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const user = Object.assign({}, this.state);
-    this.props.processForm(user);
+    if (!this.state.username) {
+      this.setState({warning: true, warningValue: 'username'})
+    } else if (this.props.formType == "signup" && !this.state.email) {
+      this.setState({warning: true, warningValue: 'email'})
+    } else if (this.state.password < 6) {
+      this.setState({warning: true, warningValue: 'password'})
+    } else {
+      const user = Object.assign({}, this.state);
+      this.props.processForm(user);
+    }
   }
 
   renderErrors() {
@@ -36,6 +48,15 @@ class SessionForm extends React.Component {
   }
 
   render() {
+
+    const renderWarning = () => (
+      <Animated animationIn="slideInRight" animationOut="zoomOutLeft" isVisible={true}>
+      <div className="alert alert-danger" role="alert" style={{ fontSize: "12px", width: "fit-content", marginLeft: "55px", marginTop: "10px", marginBottom: "0px"}}>
+        Please enter a valid {this.state.warningValue}
+      </div>
+      </Animated>
+    )
+
     return (
       <div className="login-form-container">
         <form onSubmit={this.handleSubmit} className="login-form-box">
@@ -52,6 +73,18 @@ class SessionForm extends React.Component {
                 className="login-input"
               />
             </label>
+            {this.props.formType == "signup" &&
+            <div className="login-form">
+              <br />
+              <label>Email:
+                <input type="email"
+                  value={this.state.email}
+                  onChange={this.update('email')}
+                  className="login-input"
+                />
+              </label>
+            </div> 
+            }
             <br />
             <label>Password:
               <input type="password"
@@ -63,6 +96,7 @@ class SessionForm extends React.Component {
             <br />
             <input className="session-submit" type="submit" value={this.props.formType} />
           </div>
+          {this.state.warning ? renderWarning() : null}
         </form>
       </div>
     );
