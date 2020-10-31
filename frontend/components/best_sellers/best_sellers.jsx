@@ -59,7 +59,7 @@ class NYTBestSellers extends React.Component {
               data-toggle="dropdown"
               aria-haspopup="true"
               aria-expanded="false"
-              style={{ fontSize: "12px" }}
+              style={{ fontSize: "12px", backgroundColor: "#230903", borderColor: "#230903"}}
             >
               {this.state.nytList}
             </button>

@@ -30,6 +30,7 @@ body {
     // background-image: url(https://image.freepik.com/free-vector/violet-beautiful-flowers-leaves_23-2148383838.jpg);
     background-color: rgba(255,255,255,0.7);
     background-blend-mode: luminosity;
+    color: #230903;
 }
 
 ul {
@@ -70,6 +71,7 @@ input.middle:focus {
 
 .logo-text {
   padding-top: 10px;
+  color: #230903
 }
 
 .header-nav {
@@ -293,7 +295,8 @@ input.middle:focus {
 .splash-logo {
   margin: 0px;
   font-size: 127px;
-  color: rgba(0,0,0,0.77);
+  color: #230903;
+  // color: rgba(0,0,0,0.77);
   // color: rgba(255, 255, 255, 0.88);
   //   color: #dc3545;
   //   text-shadow: 1px 4px rgba(0,0,0,0.8);
@@ -430,6 +433,7 @@ input.middle:focus {
   height: 66px;
   width: 44px;
   border-radius: 3px;
+  box-shadow: 1px 1px 5px grey;
 }
 
 // EXCHANGE LISTS
