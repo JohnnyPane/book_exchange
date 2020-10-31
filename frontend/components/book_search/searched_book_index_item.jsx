@@ -149,7 +149,7 @@ class SearchedBookIndexItem extends React.Component {
 
     const renderWarning = () => (
       <Animated animationIn="slideInRight" animationOut="zoomOutLeft" isVisible={true}>
-      <div className="alert alert-warning" role="alert" style={{ fontSize: "12px", width: "fit-content", marginLeft: "3px", marginBottom: "0.5rem"}}>
+      <div className="alert alert-warning" role="alert" style={{ fontSize: "11.5px", width: "178px", marginBottom: "0.5rem"}}>
         Please Select a Wishlist
       </div>
       </Animated>
@@ -186,7 +186,7 @@ class SearchedBookIndexItem extends React.Component {
               <div className="book-search-titles">
                 <div className="search-title-author">
                   <h5>{volumeInfo.title}</h5>
-                  <h6>{volumeInfo.authors.join(", ")}</h6>
+                  <h6>{volumeInfo.authors ? volumeInfo.authors.join(", ") : "unkown"}</h6>
                 </div>
                 <div className="btn-group dropright wishlist-dropdown">
                   <button
