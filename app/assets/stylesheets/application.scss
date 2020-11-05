@@ -42,6 +42,17 @@ input.middle:focus {
     outline-width: 0;
 }
 
+a {
+  color: rgb(106, 154, 105);
+  text-decoration: none;
+  background-color: transparent;
+}
+
+a:hover {
+  color: #230903;
+  text-decoration: none;
+}
+
 // NAVBAR
 
 .logo-link {
@@ -146,9 +157,9 @@ input.middle:focus {
   margin-top: 150px;
 }
 
-.login-form-box > a:hover {
-	color: darkslategray;
-}
+// .login-form-box > a:hover {
+// 	color: darkslategray;
+// }
 
 // SEARCH PAGE
 
@@ -206,7 +217,7 @@ input.middle:focus {
   flex-direction: column;
   margin-right: 5px;
   padding-left: 15px;
-  margin-top: 9px;
+  margin-top: 2px;
   width: 202px;
 }
 
@@ -324,6 +335,7 @@ input.middle:focus {
     align-items: center;
     background-color: white;
     box-shadow: 0 1px 6px 0 rgba(32, 33, 36, .48);
+    margin-top: -20px;
     // position: relative;
     // top: -45px;
 }
@@ -426,7 +438,7 @@ input.middle:focus {
 
 .wishlist-book-item > div {
   flex-direction: column;
-  margin-left: 5px;
+  margin-left: 12px;
 }
 
 .wish-index-book-img {
