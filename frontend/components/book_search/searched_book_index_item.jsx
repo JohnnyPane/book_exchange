@@ -13,6 +13,7 @@ class SearchedBookIndexItem extends React.Component {
       button_title: "",
       wishlist_index: "",
       wishlist_name: "",
+      wishlist_submitted: false,
       genre: "",
       warning: false,
       book_added: false,
@@ -36,6 +37,7 @@ class SearchedBookIndexItem extends React.Component {
         warning: false,
         book_added: false,
         exchange_added: false,
+        wishlist_submitted: false,
         book_title: this.props.book.volumeInfo.title
       });
     }
@@ -61,7 +63,7 @@ class SearchedBookIndexItem extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    let author, descript, image;
+    let author, descript, image, wishlist_id;
 
     if (this.props.book.volumeInfo.authors) {
       author = this.props.book.volumeInfo.authors.join(", ");
@@ -80,15 +82,22 @@ class SearchedBookIndexItem extends React.Component {
     } else {
       image = null;
     }
+
+    if (this.state.wishlist_submitted) {
+      console.log(this.props.wishlists[this.props.wishlists.length - 1].id, "JUMANJI")
+      wishlist_id = this.props.wishlists[this.props.wishlists.length - 1].id
+    } else {
+      wishlist_id = this.state.wishlist_id
+    }
     const newBook = {
       title: this.props.book.volumeInfo.title,
       authors: author,
       imageURL: image,
       description: descript,
-      wishlist_id: this.state.wishlist_id
+      wishlist_id: wishlist_id
     };
    
-    if (this.state.wishlist_index.length > 0) {
+    if (this.state.wishlist_submitted == true || this.state.wishlist_index.length > 0) {
       this.props.createBook(newBook);
     } else {
       alert("please select a wishlist to add the book to");
@@ -98,6 +107,7 @@ class SearchedBookIndexItem extends React.Component {
 
   createWishlistSubmit(e) {
     e.preventDefault();
+    this.setState({ wishlist_submitted: true });
     this.props.createWishlist({
       title: this.state.wishlist_name,
       genre: this.state.genre
@@ -156,9 +166,9 @@ class SearchedBookIndexItem extends React.Component {
     )
 
     const updateDropdownName = () => {
-      const titles = [];
-      wishlists.map(list => titles.push(list.title));
-      return titles[this.state.wishlist_index];
+        const titles = [];
+        wishlists.map(list => titles.push(list.title));
+        return titles[this.state.wishlist_index];
     };
 
     const genres = ["Fantasy", "Sci-Fi", "Horror", "Western", "Romance", "Thriller", "Mystery", "Detective", "Dystopia", "Memoir", "Biography", "Play", "Musical", "Satire", "Poetry", "Young Adult", "Children's Lit"]
@@ -178,7 +188,7 @@ class SearchedBookIndexItem extends React.Component {
                     style={{
                       width: "128px",
                       height: "160px",
-                      color: "green"
+                      color: "#230903"
                     }}
                   />
                 )}
@@ -200,9 +210,9 @@ class SearchedBookIndexItem extends React.Component {
                     onClick={this.update("button_title")}
                     style={{boxShadow: "0.5px 0.5px 3px grey"}}
                   >
-                    {this.state.wishlist_index.length < 1
+                    {this.state.wishlist_index.length < 1 && this.state.wishlist_submitted == false
                       ? "Choose a Wishlist"
-                      : updateDropdownName()}
+                      : (this.state.wishlist_name.length < 1 && this.state.wishlist_submitted == false) ? updateDropdownName() : this.state.wishlist_name }
                   </button>
 
                   <div
@@ -262,7 +272,7 @@ class SearchedBookIndexItem extends React.Component {
                   </div>
                 </div>
                 <div className="search-buttons">
-                  {this.state.wishlist_index.length > 0 ? (
+                  {this.state.wishlist_submitted == true || this.state.wishlist_index.length > 0 ? (
                     this.state.book_added ? (
                       <Animated animationIn="lightSpeedIn" isVisible={true}>
                         <div
