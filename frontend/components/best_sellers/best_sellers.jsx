@@ -187,7 +187,8 @@ class NYTBestSellers extends React.Component {
                 <li className="bestseller-title" key={i}>
                   <button
                     className="bestseller-title"
-                    value={book.isbns[0].isbn10}
+                    // value={book.isbns[0].isbn10}
+                    value={book.book_details[0].title}
                     onClick={this.searchGoogle}
                   >
                     {book.book_details[0].title.toLowerCase()}
